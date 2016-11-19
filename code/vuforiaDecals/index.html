@@ -1,0 +1,60 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<head>
+    <title>Vuforia Decals</title>
+    <script src="../resources/lib/three/three.min.js"></script>
+		<script src="../resources/geometries/DecalGeometry.js"></script>
+    <script src="../resources/lib/argon.min.js"></script>
+    <script src="../resources/lib/CSS3DArgonHUD.js"></script>
+		<script src="../resources/lib/dat.gui.min.js"></script>
+    <style>
+
+#description {
+  pointer-events: auto;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  padding: 10px;
+  background-color:rgba(255,255,255,0.7);
+  -webkit-backdrop-filter: blur(5px);
+  position:absolute;
+  bottom: 0px;
+}
+
+.argon-focus #description {
+  transition: opacity 0.8s;
+  visibility: visible;
+  opacity: 1; 
+}
+
+.argon-no-focus #description {
+  transition: visibility 0s linear 0.8s, opacity 0.8s;
+  visibility: visible;
+  opacity: 0;
+}
+
+.dg {
+  pointer-events: auto;
+}
+
+canvas {
+  pointer-events: auto !important;
+}
+    </style>
+</head>
+  <body>
+  <div id="argon">
+    <div onclick="hideMe(this)"  id="description">
+      <br>
+      <h2>Vuforia Three.js Decal Demo</h2>
+        <h5>(click to dismiss)</h5>
+      <p>This example repurposes the WebGL Decals demo from three.js and places the model on the <a href="../resources/GVUBrochure.pdf">cover of the GVU Brochure</a>.</p>  
+    </div>
+  </div>
+  </body>
+	<script>
+		function hideMe(elem) {
+		    elem.style.display = 'none';
+        event.stopPropagation();
+		}	
+	</script>
+  <script src="app.js"></script>
+</html>
