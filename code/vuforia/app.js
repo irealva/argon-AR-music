@@ -121,7 +121,7 @@ app.vuforia.isAvailable().then(function (available) {
         // the vuforia API is ready, so we can start using it.
         // tell argon to download a vuforia dataset.  The .xml and .dat file must be together
         // in the web directory, even though we just provide the .xml file url here
-        api.objectTracker.createDataSet("../resources/datasets/ArgonTutorial.xml").then(function (dataSet) {
+        api.objectTracker.createDataSet("../resources/datasets/IxDMusic.xml").then(function (dataSet) {
             // the data set has been succesfully downloaded
             // tell vuforia to load the dataset.
             dataSet.load().then(function () {
