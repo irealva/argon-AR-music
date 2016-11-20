@@ -128,9 +128,14 @@ app.vuforia.isAvailable().then(function (available) {
             dataSet.load().then(function () {
                 /*************/
 
-                console.log("in here");
-                var v = document.getElementById('song');
-                v.play();
+                var au = new Audio("./test.mp3");
+                //for (p in audioElement)
+                au.controls = true;
+                document.body.appendChild(au)
+
+                // console.log("in here");
+                // var v = document.getElementById('song');
+                // v.play();
 
                 /*************/
 
