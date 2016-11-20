@@ -132,9 +132,10 @@ app.vuforia.isAvailable().then(function (available) {
                 // var v = document.getElementById('song');
                 // v.play();
 
-                var au = new Audio("./test.mp3");
-                //for (p in audioElement)
-                au.controls = true;
+                // var au = new Audio("./test.mp3");
+                // //for (p in audioElement)
+                // au.controls = true;
+                // document.body.appendChild(au)
 
                 /*************/
 
@@ -154,8 +155,11 @@ app.vuforia.isAvailable().then(function (available) {
                 // the updateEvent is called each time the 3D world should be
                 // rendered, before the renderEvent.  The state of your application
                 // should be updated here.
-                app.context.updateEvent.addEventListener(function (au) {
-                    document.body.appendChild(au)
+                app.context.updateEvent.addEventListener(function () {
+                    console.log('visible!');
+
+                    var v = document.getElementById('song');
+                    v.setAttribute("style", "display: block;");
 
                     // get the pose (in local coordinates) of the gvuBrochure target
                     var gvuBrochurePose = app.context.getEntityPose(gvuBrochureEntity);
