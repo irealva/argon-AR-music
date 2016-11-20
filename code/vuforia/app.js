@@ -107,6 +107,7 @@ loader.load('../resources/fonts/helvetiker_bold.typeface.js', function (font) {
     app.context.updateEvent.addEventListener(function () {
         uniforms.amplitude.value = 1.0 + Math.sin(Date.now() * 0.001 * 0.5);
     });
+
 });
 app.vuforia.isAvailable().then(function (available) {
     // vuforia not available on this platform
@@ -125,6 +126,15 @@ app.vuforia.isAvailable().then(function (available) {
             // the data set has been succesfully downloaded
             // tell vuforia to load the dataset.
             dataSet.load().then(function () {
+                /*************/
+
+                console.log("in here");
+                var v = document.getElementById('song');
+                v.play();
+
+                /*************/
+
+
                 // when it is loaded, we retrieve a list of trackables defined in the
                 // dataset and set up the content for the target
                 var trackables = dataSet.getTrackables();
