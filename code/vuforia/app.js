@@ -156,11 +156,6 @@ app.vuforia.isAvailable().then(function (available) {
                 // rendered, before the renderEvent.  The state of your application
                 // should be updated here.
                 app.context.updateEvent.addEventListener(function () {
-                    console.log('visible!');
-
-                    var v = document.getElementById('song');
-                    v.setAttribute("style", "display: block;");
-
                     // get the pose (in local coordinates) of the gvuBrochure target
                     var gvuBrochurePose = app.context.getEntityPose(gvuBrochureEntity);
                     // if the pose is known the target is visible, so set the
@@ -168,6 +163,11 @@ app.vuforia.isAvailable().then(function (available) {
                     if (gvuBrochurePose.poseStatus & Argon.PoseStatus.KNOWN) {
                         gvuBrochureObject.position.copy(gvuBrochurePose.position);
                         gvuBrochureObject.quaternion.copy(gvuBrochurePose.orientation);
+
+                        console.log('visible!');
+                        var v = document.getElementById('song');
+                        v.setAttribute("style", "display: block;");
+
                     }
                     // when the target is first seen after not being seen, the
                     // status is FOUND.  Here, we move the 3D text object from the
@@ -177,10 +177,18 @@ app.vuforia.isAvailable().then(function (available) {
                     if (gvuBrochurePose.poseStatus & Argon.PoseStatus.FOUND) {
                         gvuBrochureObject.add(argonTextObject);
                         argonTextObject.position.z = 0;
+
+                        console.log('visible!');
+                        var v = document.getElementById('song');
+                        v.setAttribute("style", "display: block;");
                     }
                     else if (gvuBrochurePose.poseStatus & Argon.PoseStatus.LOST) {
                         argonTextObject.position.z = -0.50;
                         userLocation.add(argonTextObject);
+
+                        console.log('visible!');
+                        var v = document.getElementById('song');
+                        v.setAttribute("style", "display: none;");
                     }
                 });
             }).catch(function (err) {
