@@ -126,20 +126,6 @@ app.vuforia.isAvailable().then(function (available) {
             // the data set has been succesfully downloaded
             // tell vuforia to load the dataset.
             dataSet.load().then(function () {
-                /*************/
-
-                // console.log("in here");
-                // var v = document.getElementById('song');
-                // v.play();
-
-                // var au = new Audio("./test.mp3");
-                // //for (p in audioElement)
-                // au.controls = true;
-                // document.body.appendChild(au)
-
-                /*************/
-
-
                 // when it is loaded, we retrieve a list of trackables defined in the
                 // dataset and set up the content for the target
                 var trackables = dataSet.getTrackables();
@@ -167,6 +153,7 @@ app.vuforia.isAvailable().then(function (available) {
                         console.log('visible!');
                         var v = document.getElementById('song');
                         v.setAttribute("style", "display: block;");
+                        v.play();
 
                     }
                     // when the target is first seen after not being seen, the
@@ -181,6 +168,7 @@ app.vuforia.isAvailable().then(function (available) {
                         console.log('visible!');
                         var v = document.getElementById('song');
                         v.setAttribute("style", "display: block;");
+                        v.play();
                     }
                     else if (gvuBrochurePose.poseStatus & Argon.PoseStatus.LOST) {
                         argonTextObject.position.z = -0.50;
@@ -189,6 +177,7 @@ app.vuforia.isAvailable().then(function (available) {
                         console.log('visible!');
                         var v = document.getElementById('song');
                         v.setAttribute("style", "display: none;");
+                        v.pause();
                     }
                 });
             }).catch(function (err) {
