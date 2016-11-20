@@ -126,20 +126,6 @@ app.vuforia.isAvailable().then(function (available) {
             // the data set has been succesfully downloaded
             // tell vuforia to load the dataset.
             dataSet.load().then(function () {
-                /*************/
-
-                var au = new Audio("./test.mp3");
-                //for (p in audioElement)
-                au.controls = true;
-                document.body.appendChild(au)
-
-                // console.log("in here");
-                // var v = document.getElementById('song');
-                // v.play();
-
-                /*************/
-
-
                 // when it is loaded, we retrieve a list of trackables defined in the
                 // dataset and set up the content for the target
                 var trackables = dataSet.getTrackables();
@@ -177,6 +163,19 @@ app.vuforia.isAvailable().then(function (available) {
                         argonTextObject.position.z = -0.50;
                         userLocation.add(argonTextObject);
                     }
+
+                    /*************/
+
+                    var au = new Audio("./test.mp3");
+                    //for (p in audioElement)
+                    au.controls = true;
+                    document.body.appendChild(au)
+
+                    // console.log("in here");
+                    // var v = document.getElementById('song');
+                    // v.play();
+
+                    /*************/
                 });
             }).catch(function (err) {
                 console.log("could not load dataset: " + err.message);
