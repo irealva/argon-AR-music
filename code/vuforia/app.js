@@ -54,7 +54,7 @@ argonTextObject.position.z = -0.5;
 userLocation.add(argonTextObject);
 var loader = new THREE.FontLoader();
 loader.load('../resources/fonts/helvetiker_bold.typeface.js', function (font) {
-    var textGeometry = new THREE.TextGeometry("argon.js", {
+    var textGeometry = new THREE.TextGeometry("1", {
         font: font,
         size: 40,
         height: 5,
@@ -135,6 +135,7 @@ app.vuforia.isAvailable().then(function (available) {
                 // entities, we can ask for their pose in any coordinate frame we know
                 // about.
                 var gvuBrochureEntity = app.context.subscribeToEntityById(trackables["bluestone"].id);
+                var gvuBrochureEntity2 = app.context.subscribeToEntityById(trackables["redstone"].id);
                 // create a THREE object to put on the trackable
                 var gvuBrochureObject = new THREE.Object3D;
                 scene.add(gvuBrochureObject);
@@ -144,13 +145,16 @@ app.vuforia.isAvailable().then(function (available) {
                 app.context.updateEvent.addEventListener(function () {
                     // get the pose (in local coordinates) of the gvuBrochure target
                     var gvuBrochurePose = app.context.getEntityPose(gvuBrochureEntity);
+                    var gvuBrochurePose2 = app.context.getEntityPose(gvuBrochureEntity2);
+
+
+                    /* SONG 1*/
                     // if the pose is known the target is visible, so set the
                     // THREE object to the location and orientation
                     if (gvuBrochurePose.poseStatus & Argon.PoseStatus.KNOWN) {
                         gvuBrochureObject.position.copy(gvuBrochurePose.position);
                         gvuBrochureObject.quaternion.copy(gvuBrochurePose.orientation);
 
-                        console.log('visible!');
                         var v = document.getElementById('song');
                         v.setAttribute("style", "display: block;");
                         v.play();
@@ -165,7 +169,6 @@ app.vuforia.isAvailable().then(function (available) {
                         gvuBrochureObject.add(argonTextObject);
                         argonTextObject.position.z = 0;
 
-                        console.log('visible!');
                         var v = document.getElementById('song');
                         v.setAttribute("style", "display: block;");
                         v.play();
@@ -174,11 +177,45 @@ app.vuforia.isAvailable().then(function (available) {
                         argonTextObject.position.z = -0.50;
                         userLocation.add(argonTextObject);
 
-                        console.log('visible!');
                         var v = document.getElementById('song');
                         v.setAttribute("style", "display: none;");
                         v.pause();
                     }
+
+                    /* SONG 2 */
+                    // if the pose is known the target is visible, so set the
+                    // THREE object to the location and orientation
+                    if (gvuBrochurePose2.poseStatus & Argon.PoseStatus.KNOWN) {
+                        gvuBrochureObject.position.copy(gvuBrochurePose.position);
+                        gvuBrochureObject.quaternion.copy(gvuBrochurePose.orientation);
+
+                        var v = document.getElementById('song2');
+                        v.setAttribute("style", "display: block;");
+                        v.play();
+
+                    }
+                    // when the target is first seen after not being seen, the
+                    // status is FOUND.  Here, we move the 3D text object from the
+                    // world to the target.
+                    // when the target is first lost after being seen, the status
+                    // is LOST.  Here, we move the 3D text object back to the world
+                    if (gvuBrochurePose2.poseStatus & Argon.PoseStatus.FOUND) {
+                        gvuBrochureObject.add(argonTextObject);
+                        argonTextObject.position.z = 0;
+
+                        var v = document.getElementById('song2');
+                        v.setAttribute("style", "display: block;");
+                        v.play();
+                    }
+                    else if (gvuBrochurePose2.poseStatus & Argon.PoseStatus.LOST) {
+                        argonTextObject.position.z = -0.50;
+                        userLocation.add(argonTextObject);
+
+                        var v = document.getElementById('song2');
+                        v.setAttribute("style", "display: none;");
+                        v.pause();
+                    }
+
                 });
             }).catch(function (err) {
                 console.log("could not load dataset: " + err.message);

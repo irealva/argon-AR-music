@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="redstone" size="0.1129 0.0903" />
     <ImageTarget name="bluestone" size="0.1129 0.0903" />
   </Tracking>
 </QCARConfig>
