@@ -148,6 +148,8 @@ app.vuforia.isAvailable().then(function (available) {
                     // get the pose (in local coordinates) of the gvuBrochure target
                     var gvuBrochurePose = app.context.getEntityPose(gvuBrochureEntity);
                     var gvuBrochurePose2 = app.context.getEntityPose(gvuBrochureEntity2);
+                    var gvuBrochurePose3 = app.context.getEntityPose(gvuBrochureEntity3);
+                    var gvuBrochurePose4 = app.context.getEntityPose(gvuBrochureEntity4);
 
 
                     /* SONG 1*/
