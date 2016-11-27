@@ -30,6 +30,13 @@
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
 			var bolAnimate = true;
+
+			var minX = -1;
+			var maxX = -1;
+			var minY = -1;
+			var maxY = -1;
+
+			var getCoordinatesOnce = true;
 			init();
 			animate();
 			function init() {
@@ -54,6 +61,7 @@
 						particle = particles[ i ++ ] = new THREE.Sprite( material );
 						particle.position.x = ix * SEPARATION - ( ( AMOUNTX * SEPARATION ) / 2 );
 						particle.position.z = iy * SEPARATION - ( ( AMOUNTY * SEPARATION ) / 2 );
+						// console.log(particle.position.x, particle.position.y, particle.position.z);
 						scene.add( particle );
 					}
 				}
@@ -71,8 +79,13 @@
 			}
 			//
 			function onDocumentClick(event) {
-				bolAnimate = !bolAnimate;
-				console.log(bolAnimate);
+				let x = event.offsetX;
+				let y = event.offsetY;
+
+				if (x > minX && x < maxX && y > minY && y < maxY) {
+					bolAnimate = !bolAnimate;
+					console.log(bolAnimate);
+				}				
 			}
 			//
 			function onDocumentMouseMove( event ) {
@@ -118,7 +131,41 @@
 				}
 				renderer.render( scene, camera );
 				count += 0.1;
+
+				//Has to render before we can get sprite position
+				if(getCoordinatesOnce) {
+					for ( point of particles ) {
+							let vector = screenXY(point);
+
+							if(minX === -1 || vector.x < minX) {
+								minX = vector.x;
+							}
+							if(maxX === -1 || vector.x > maxX) {
+								maxX = vector.x;
+							}
+							if(minY === -1 || vector.y < minY) {
+								minY = vector.y;
+							}
+							if(maxY === -1 || vector.y > maxY) {
+								maxY = vector.y;
+							}
+					}
+					console.log(minX, maxX, minY, maxY);
+
+					getCoordinatesOnce = false;
+				}
 			}
+			// Taken from: https://github.com/mrdoob/three.js/issues/78
+			function screenXY(obj){
+				var vector = obj.position.clone();
+
+				vector.project(camera);
+
+			    vector.x = ( vector.x + 1 ) * window.innerWidth / 2;
+			    vector.y = ( - vector.y + 1) *  window.innerHeight / 2;
+				return vector;
+
+			};
 		</script>
 	</body>
 </html>
