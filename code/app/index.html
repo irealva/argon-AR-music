@@ -72,7 +72,7 @@
 				// stats = new Stats();
 				// container.appendChild( stats.dom );
 				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+				document.addEventListener( 'touchstart', onDocumentTouchStart, false ); // mobile touch start
 				document.addEventListener( 'touchmove', onDocumentTouchMove, false );
 				document.addEventListener( 'click', onDocumentClick, false );
 				//
@@ -85,7 +85,7 @@
 				if (x > minX && x < maxX && y > minY && y < maxY) {
 					bolAnimate = !bolAnimate;
 					console.log(bolAnimate);
-				}				
+				}
 			}
 			//
 			function onDocumentMouseMove( event ) {
@@ -97,6 +97,14 @@
 					event.preventDefault();
 					mouseX = event.touches[ 0 ].pageX - windowHalfX;
 					mouseY = event.touches[ 0 ].pageY - windowHalfY;
+
+					let x = mouseX;
+					let y = mouseY;
+					//Addition to stop the particle animation
+					if (x > minX && x < maxX && y > minY && y < maxY) {
+						bolAnimate = !bolAnimate;
+						console.log(bolAnimate);
+					}
 				}
 			}
 			function onDocumentTouchMove( event ) {
