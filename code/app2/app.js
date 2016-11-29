@@ -215,11 +215,14 @@ app.vuforia.isAvailable().then(function (available) {
                     // when the target is first lost after being seen, the status
                     // is LOST.  Here, we move the 3D text object back to the world
                     if (gvuBrochurePose.poseStatus & Argon.PoseStatus.FOUND) {
+                        console.log("FOUND");
 
                         for (part of particles) {
                             gvuBrochureObject.add(part);
-                            part.position.z = 0;
+                            // part.position.z = 0;
+                            part.position.z = -400;
                         }
+                        render();
 
 
                         // gvuBrochureObject.add(argonTextObject);
@@ -230,8 +233,10 @@ app.vuforia.isAvailable().then(function (available) {
                         // v.play();
                     }
                     else if (gvuBrochurePose.poseStatus & Argon.PoseStatus.LOST) {
+                        console.log("LOST");
                         for (part of particles) {
-                            part.position.z = -0.50;
+                            // part.position.z = -0.50;
+                            part.position.z = -400;
                             userLocation.add(part);
                         }
 
@@ -336,9 +341,9 @@ app.updateEvent.addEventListener(function () {
         userLocation.position.copy(userPose.position);
     }
 
-    if (bolAnimate) {
-        render();
-    }
+    // if (bolAnimate) {
+    //     render();
+    // }
 });
 
 
