@@ -155,6 +155,7 @@ function onDocumentTouchMove( event ) {
 }
 
 
+console.log("BEFORE VUFORIA");
 app.vuforia.isAvailable().then(function (available) {
     // vuforia not available on this platform
     if (!available) {
