@@ -54,7 +54,7 @@ var uniforms = {
 };
 var argonTextObject = new THREE.Object3D();
 argonTextObject.position.z = -0.5;
-userLocation.add(argonTextObject);
+// userLocation.add(argonTextObject);
 var loader = new THREE.FontLoader();
 loader.load('../resources/fonts/helvetiker_bold.typeface.js', function (font) {
     var textGeometry = new THREE.TextGeometry("1", {
@@ -112,7 +112,95 @@ loader.load('../resources/fonts/helvetiker_bold.typeface.js', function (font) {
     });
 
 });
+
+var SEPARATION = 20, AMOUNTX = 40, AMOUNTY = 4;
+var container, stats;
+var renderer2;
+// var camera, renderer2;
+var particles, particle, count = 0;
+var mouseX = 0, mouseY = 0;
+var windowHalfX = window.innerWidth / 2;
+var windowHalfY = window.innerHeight / 2;
+var bolAnimate = true;
+
+init();
+animate();
+
+function init() {
+	container = document.createElement( 'div' );
+	document.body.appendChild( container );
+	particles = new Array();
+	var PI2 = Math.PI * 2;
+	var material = new THREE.SpriteCanvasMaterial( {
+		color: 0xffffff,
+		program: function ( context ) {
+			context.beginPath();
+			context.arc( 0, 0, 0.5, 0, PI2, true );
+			context.fill();
+		}
+	} );
+	var i = 0;
+	for ( var ix = 0; ix < AMOUNTX; ix ++ ) {
+		for ( var iy = 0; iy < AMOUNTY; iy ++ ) {
+			particle = particles[ i ++ ] = new THREE.Sprite( material );
+			particle.position.x = ix * SEPARATION - ( ( AMOUNTX * SEPARATION ) / 2 );
+			particle.position.z = iy * SEPARATION - ( ( AMOUNTY * SEPARATION ) / 2 );
+			console.log(particle.position.x, particle.position.y, particle.position.z);
+            particle.scale.set(0.1, 0.1, 0.1);
+			scene.add( particle );
+		}
+	}
+	renderer = new THREE.CanvasRenderer();
+    renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setSize( window.innerWidth, window.innerHeight );
+	container.appendChild( renderer.domElement );
+
+    // renderer2 = new THREE.CanvasRenderer();
+    // renderer2.setPixelRatio( window.devicePixelRatio );
+    // renderer2.setSize( window.innerWidth, window.innerHeight );
+    // app.view.element.appendChild(renderer2.domElement);
+
+
+	// stats = new Stats();
+	// container.appendChild( stats.dom );
+	// document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+	// document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+	// document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+	// document.addEventListener( 'click', onDocumentClick, false );
+
+    // userLocation.add(material);
+	//
+}
+
+function animate() {
+	requestAnimationFrame( animate );
+
+	if (bolAnimate) {
+		render();
+	}
+	// stats.update();
+}
+function render() {
+	camera.position.x += ( mouseX - camera.position.x ) * .05;
+	camera.position.y += ( - mouseY - camera.position.y ) * .05;
+	camera.lookAt( scene.position );
+	var i = 0;
+	for ( var ix = 0; ix < AMOUNTX; ix ++ ) {
+		for ( var iy = 0; iy < AMOUNTY; iy ++ ) {
+			particle = particles[ i++ ];
+			particle.position.y = ( Math.sin( ( ix + count ) * 0.3 ) * 50 ) +
+				( Math.sin( ( iy + count ) * 0.5 ) * 50 );
+			particle.scale.x = particle.scale.y = ( Math.sin( ( ix + count ) * 0.3 ) + 1 ) * 4 +
+				( Math.sin( ( iy + count ) * 0.5 ) + 1 ) * 4;
+		}
+	}
+	renderer.render( scene, camera );
+	count += 0.1;
+}
+
 app.vuforia.isAvailable().then(function (available) {
+    // init();
+
     // vuforia not available on this platform
     if (!available) {
         console.warn("vuforia not available on this platform.");
@@ -189,118 +277,6 @@ app.vuforia.isAvailable().then(function (available) {
                         v.pause();
                     }
 
-                    /*********************************************
-                    **********************************************/
-
-                    /* SONG 2 */
-                    // if the pose is known the target is visible, so set the
-                    // THREE object to the location and orientation
-                    if (gvuBrochurePose2.poseStatus & Argon.PoseStatus.KNOWN) {
-                        gvuBrochureObject.position.copy(gvuBrochurePose.position);
-                        gvuBrochureObject.quaternion.copy(gvuBrochurePose.orientation);
-
-                        var v = document.getElementById('song2');
-                        v.setAttribute("style", "display: block;");
-                        v.play();
-
-                    }
-                    // when the target is first seen after not being seen, the
-                    // status is FOUND.  Here, we move the 3D text object from the
-                    // world to the target.
-                    // when the target is first lost after being seen, the status
-                    // is LOST.  Here, we move the 3D text object back to the world
-                    if (gvuBrochurePose2.poseStatus & Argon.PoseStatus.FOUND) {
-                        gvuBrochureObject.add(argonTextObject);
-                        argonTextObject.position.z = 0;
-
-                        var v = document.getElementById('song2');
-                        v.setAttribute("style", "display: block;");
-                        v.play();
-                    }
-                    else if (gvuBrochurePose2.poseStatus & Argon.PoseStatus.LOST) {
-                        argonTextObject.position.z = -0.50;
-                        userLocation.add(argonTextObject);
-
-                        var v = document.getElementById('song2');
-                        v.setAttribute("style", "display: none;");
-                        v.pause();
-                    }
-
-                    /*********************************************
-                    **********************************************/
-
-                    /* SONG 3 */
-
-                    // if the pose is known the target is visible, so set the
-                    // THREE object to the location and orientation
-                    if (gvuBrochurePose3.poseStatus & Argon.PoseStatus.KNOWN) {
-                        gvuBrochureObject.position.copy(gvuBrochurePose.position);
-                        gvuBrochureObject.quaternion.copy(gvuBrochurePose.orientation);
-
-                        var v = document.getElementById('song3');
-                        v.setAttribute("style", "display: block;");
-                        v.play();
-
-                    }
-                    // when the target is first seen after not being seen, the
-                    // status is FOUND.  Here, we move the 3D text object from the
-                    // world to the target.
-                    // when the target is first lost after being seen, the status
-                    // is LOST.  Here, we move the 3D text object back to the world
-                    if (gvuBrochurePose3.poseStatus & Argon.PoseStatus.FOUND) {
-                        gvuBrochureObject.add(argonTextObject);
-                        argonTextObject.position.z = 0;
-
-                        var v = document.getElementById('song3');
-                        v.setAttribute("style", "display: block;");
-                        v.play();
-                    }
-                    else if (gvuBrochurePose3.poseStatus & Argon.PoseStatus.LOST) {
-                        argonTextObject.position.z = -0.50;
-                        userLocation.add(argonTextObject);
-
-                        var v = document.getElementById('song3');
-                        v.setAttribute("style", "display: none;");
-                        v.pause();
-                    }
-
-                    /*********************************************
-                    **********************************************/
-
-                    /* SONG 4 */
-
-                    // if the pose is known the target is visible, so set the
-                    // THREE object to the location and orientation
-                    if (gvuBrochurePose4.poseStatus & Argon.PoseStatus.KNOWN) {
-                        gvuBrochureObject.position.copy(gvuBrochurePose.position);
-                        gvuBrochureObject.quaternion.copy(gvuBrochurePose.orientation);
-
-                        var v = document.getElementById('song4');
-                        v.setAttribute("style", "display: block;");
-                        v.play();
-
-                    }
-                    // when the target is first seen after not being seen, the
-                    // status is FOUND.  Here, we move the 3D text object from the
-                    // world to the target.
-                    // when the target is first lost after being seen, the status
-                    // is LOST.  Here, we move the 3D text object back to the world
-                    if (gvuBrochurePose4.poseStatus & Argon.PoseStatus.FOUND) {
-                        gvuBrochureObject.add(argonTextObject);
-                        argonTextObject.position.z = 0;
-
-                        var v = document.getElementById('song4');
-                        v.setAttribute("style", "display: block;");
-                        v.play();
-                    }
-                    else if (gvuBrochurePose4.poseStatus & Argon.PoseStatus.LOST) {
-                        argonTextObject.position.z = -0.50;
-                        userLocation.add(argonTextObject);
-
-                        var v = document.getElementById('song4');
-                        v.setAttribute("style", "display: none;");
-                        v.pause();
-                    }
 
                 });
             }).catch(function (err) {
