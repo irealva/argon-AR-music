@@ -46,7 +46,7 @@
 
 			var getCoordinatesOnce = true;
 			init();
-			animate();
+			// animate();
 			function getTexture() {
 			    var canvas = document.createElement( 'canvas' );
 			    canvas.width = window.innerWidth;
@@ -227,12 +227,58 @@
 
 			};
 
-			// renderEvent is fired whenever argon wants the app to update its display
+
+
+			// the updateEvent is called each time the 3D world should be
+			// rendered, before the renderEvent.  The state of your application
+			// should be updated here.  Here, we call TWEEN.update()
+			app.updateEvent.addEventListener(function () {
+			    // get the position and orientation (the "pose") of the user
+			    // in the local coordinate frame.
+			    var userPose = app.context.getEntityPose(app.context.user);
+
+			    // assuming we know the user's pose, set the position of our
+			    // THREE user object to match it
+			    // if (userPose.poseStatus & Argon.PoseStatus.KNOWN) {
+			    //     userLocation.position.copy(userPose.position);
+			    // }
+
+				if (bolAnimate) {
+					render();
+				}
+			});
+
+
+
+			// for the CSS renderer, we want to use requestAnimationFrame to
+			// limit the number of repairs of the DOM.  Otherwise, as the
+			// DOM elements are updated, extra repairs of the DOM could be
+			// initiated.  Extra repairs do not appear to happen within the
+			// animation callback.
+			var viewport = null;
+			var subViews = null;
+			var rAFpending = false;
+
 			app.renderEvent.addEventListener(function () {
+			    // only schedule a new callback if the old one has completed
+			    if (!rAFpending) {
+			      rAFpending = true;
+			      viewport = app.view.getViewport();
+			      subViews = app.view.getSubviews();
+			      window.requestAnimationFrame(renderFunc);
+			    }
+			});
+
+
+			// the animation callback.
+			function renderFunc() {
+				rAFpending = false;
+
+
 			    // set the renderers to know the current size of the viewport.
 			    // This is the full size of the viewport, which would include
 			    // both views if we are in stereo viewing mode
-			    var viewport = app.view.getViewport();
+			    // var viewport = app.view.getViewport();
 			    renderer.setSize(viewport.width, viewport.height);
 			    // there is 1 subview in monocular mode, 2 in stereo mode
 			    for (var _i = 0, _a = app.view.getSubviews(); _i < _a.length; _i++) {
@@ -256,7 +302,7 @@
 			        renderer.setScissorTest(true);
 			        renderer.render(scene, camera);
 			    }
-			});
+			};
 
 		</script>
 	</body>
