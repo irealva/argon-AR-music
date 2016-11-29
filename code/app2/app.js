@@ -97,7 +97,7 @@ function init() {
         logarithmicDepthBuffer: true
     });
     //Based off of: http://stackoverflow.com/questions/16177056/changing-three-js-background-to-transparent-or-other-color
-    renderer.setClearColor( 0xffffff, 0);
+    // renderer.setClearColor( 0xffffff, 0);
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
 
