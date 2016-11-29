@@ -5,7 +5,7 @@ var particles, particle, count = 0;
 var mouseX = 0, mouseY = 0;
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
-var bolAnimate = true;
+var bolAnimate = false;
 
 
 // Argon stuff
@@ -234,11 +234,12 @@ app.vuforia.isAvailable().then(function (available) {
                     }
                     else if (gvuBrochurePose.poseStatus & Argon.PoseStatus.LOST) {
                         console.log("LOST");
-                        for (part of particles) {
-                            // part.position.z = -0.50;
-                            part.position.z = -400;
-                            userLocation.add(part);
-                        }
+                        //We don't have to delete it because it simply won't render?
+                        // for (part of particles) {
+                        //     // part.position.z = -0.50;
+                        //     part.position.z = -400;
+                        //     userLocation.add(part);
+                        // }
 
                         bolAnimate = false;
 
