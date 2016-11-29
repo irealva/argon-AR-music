@@ -196,6 +196,25 @@ app.vuforia.isAvailable().then(function (available) {
                     // get the pose (in local coordinates) of the gvuBrochure target
                     var gvuBrochurePose = app.context.getEntityPose(gvuBrochureEntity);
 
+
+                    /* TEST */
+                    // get the position and orientation (the "pose") of the user
+                    // in the local coordinate frame.
+                    var userPose = app.context.getEntityPose(app.context.user);
+
+                    // assuming we know the user's pose, set the position of our
+                    // THREE user object to match it
+                    if (userPose.poseStatus & Argon.PoseStatus.KNOWN) {
+                        userLocation.position.copy(userPose.position);
+                    }
+
+                    if (bolAnimate) {
+                        render();
+                    }
+                    /* TEST */
+
+
+
                     /* SONG 1*/
                     // if the pose is known the target is visible, so set the
                     // THREE object to the location and orientation
@@ -324,6 +343,7 @@ function screenXY(obj){
 // the updateEvent is called each time the 3D world should be
 // rendered, before the renderEvent.  The state of your application
 // should be updated here.  Here, we call TWEEN.update()
+/*
 app.updateEvent.addEventListener(function () {
     // get the position and orientation (the "pose") of the user
     // in the local coordinate frame.
@@ -339,7 +359,7 @@ app.updateEvent.addEventListener(function () {
         render();
     }
 });
-
+*/
 
 
 // for the CSS renderer, we want to use requestAnimationFrame to
