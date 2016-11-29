@@ -84,7 +84,7 @@ function init() {
             particle = particles[ i ++ ] = new THREE.Sprite( material );
             particle.position.x = ix * SEPARATION - ( ( AMOUNTX * SEPARATION ) / 2 );
             // particle.position.z = iy * SEPARATION - ( ( AMOUNTY * SEPARATION ) / 2 ); // Original z controls distance to object
-            particle.position.z = -600;
+            particle.position.z = -400;
             // console.log(particle.position.x, particle.position.y, particle.position.z);
             scene.add( particle );
         }
@@ -185,6 +185,7 @@ app.vuforia.isAvailable().then(function (available) {
                 // entities, we can ask for their pose in any coordinate frame we know
                 // about.
                 var gvuBrochureEntity = app.context.subscribeToEntityById(trackables["bluestone"].id);
+                console.log(gvuBrochureEntity);
 
                 // create a THREE object to put on the trackable
                 var gvuBrochureObject = new THREE.Object3D;
@@ -195,25 +196,6 @@ app.vuforia.isAvailable().then(function (available) {
                 app.context.updateEvent.addEventListener(function () {
                     // get the pose (in local coordinates) of the gvuBrochure target
                     var gvuBrochurePose = app.context.getEntityPose(gvuBrochureEntity);
-
-
-                    /* TEST */
-                    // get the position and orientation (the "pose") of the user
-                    // in the local coordinate frame.
-                    var userPose = app.context.getEntityPose(app.context.user);
-
-                    // assuming we know the user's pose, set the position of our
-                    // THREE user object to match it
-                    if (userPose.poseStatus & Argon.PoseStatus.KNOWN) {
-                        userLocation.position.copy(userPose.position);
-                    }
-
-                    if (bolAnimate) {
-                        render();
-                    }
-                    /* TEST */
-
-
 
                     /* SONG 1*/
                     // if the pose is known the target is visible, so set the
@@ -343,7 +325,6 @@ function screenXY(obj){
 // the updateEvent is called each time the 3D world should be
 // rendered, before the renderEvent.  The state of your application
 // should be updated here.  Here, we call TWEEN.update()
-/*
 app.updateEvent.addEventListener(function () {
     // get the position and orientation (the "pose") of the user
     // in the local coordinate frame.
@@ -359,7 +340,6 @@ app.updateEvent.addEventListener(function () {
         render();
     }
 });
-*/
 
 
 // for the CSS renderer, we want to use requestAnimationFrame to
