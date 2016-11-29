@@ -222,7 +222,7 @@ app.vuforia.isAvailable().then(function (available) {
                             // part.position.z = 0;
                             part.position.z = -400;
                         }
-                        render();
+                        bolAnimate = true;
 
 
                         // gvuBrochureObject.add(argonTextObject);
@@ -239,6 +239,8 @@ app.vuforia.isAvailable().then(function (available) {
                             part.position.z = -400;
                             userLocation.add(part);
                         }
+
+                        bolAnimate = false;
 
 
                         // argonTextObject.position.z = -0.50;
@@ -341,9 +343,9 @@ app.updateEvent.addEventListener(function () {
         userLocation.position.copy(userPose.position);
     }
 
-    // if (bolAnimate) {
-    //     render();
-    // }
+    if (bolAnimate) {
+        render();
+    }
 });
 
 
