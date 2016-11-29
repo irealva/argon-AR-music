@@ -5,7 +5,7 @@ var particles, particle, count = 0;
 var mouseX = 0, mouseY = 0;
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
-var bolAnimate = false;
+var bolAnimate = true;
 
 
 // Argon stuff
@@ -83,8 +83,8 @@ function init() {
         for ( var iy = 0; iy < AMOUNTY; iy ++ ) {
             particle = particles[ i ++ ] = new THREE.Sprite( material );
             particle.position.x = ix * SEPARATION - ( ( AMOUNTX * SEPARATION ) / 2 );
-            // particle.position.z = iy * SEPARATION - ( ( AMOUNTY * SEPARATION ) / 2 ); // Original z controls distance to object
-            particle.position.z = -400;
+            particle.position.z = iy * SEPARATION - ( ( AMOUNTY * SEPARATION ) / 2 ); // Original z controls distance to object
+            // particle.position.z = -400;
             // console.log(particle.position.x, particle.position.y, particle.position.z);
             scene.add( particle );
         }
@@ -234,12 +234,11 @@ app.vuforia.isAvailable().then(function (available) {
                     }
                     else if (gvuBrochurePose.poseStatus & Argon.PoseStatus.LOST) {
                         console.log("LOST");
-                        //We don't have to delete it because it simply won't render?
-                        // for (part of particles) {
-                        //     // part.position.z = -0.50;
-                        //     part.position.z = -400;
-                        //     userLocation.add(part);
-                        // }
+                        for (part of particles) {
+                            // part.position.z = -0.50;
+                            part.position.z = -0.50; //Make it disappear
+                            userLocation.add(part);
+                        }
 
                         bolAnimate = false;
 
