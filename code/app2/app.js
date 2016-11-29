@@ -175,6 +175,7 @@ app.vuforia.isAvailable().then(function (available) {
             // the data set has been succesfully downloaded
             // tell vuforia to load the dataset.
             dataSet.load().then(function () {
+                console.log("DATA LOAD");
                 // when it is loaded, we retrieve a list of trackables defined in the
                 // dataset and set up the content for the target
                 var trackables = dataSet.getTrackables();
