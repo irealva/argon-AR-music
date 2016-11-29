@@ -367,7 +367,6 @@ app.renderEvent.addEventListener(function () {
 function renderFunc() {
     rAFpending = false;
 
-
     // update the rendering stats
     stats.update();
     monoMode = (app.view.getSubviews()).length == 1;
