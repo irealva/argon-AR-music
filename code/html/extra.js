@@ -1,5 +1,3 @@
-
-
 var ctx = document.createElement('canvas').getContext('2d');
     var linGrad = ctx.createLinearGradient(0, 64, 0, 200);
     linGrad.addColorStop(0.5, 'rgba(255, 255, 255, 1.000)');
@@ -11,7 +9,8 @@ var wavesurfer = WaveSurfer.create({
       progressColor: 'hsla(200, 100%, 30%, 0.5)',
       cursorColor: '#fff',
       // This parameter makes the waveform look like SoundCloud's player
-      barWidth: 3
+      barWidth: 1,
+      height: 20
 });
 
 wavesurfer.load('song2.mp3');
@@ -22,5 +21,4 @@ wavesurfer.load('song2.mp3');
             color: 'rgba(0, 255, 0, 0.1)'
         });
     }
-
     

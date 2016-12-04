@@ -20,9 +20,9 @@ var hud = new THREE.CSS3DArgonHUD();
 // Here, we retrieve the description box and move it to the 
 // the CSS3DArgonHUD hudElements[0].  We only put it in the left
 // hud since we'll be hiding it in stereo
-var description = document.getElementById('description');
-hud.hudElements[0].appendChild(description);
-app.view.element.appendChild(hud.domElement);
+// var description = document.getElementById('description');
+// hud.hudElements[0].appendChild(description);
+// app.view.element.appendChild(hud.domElement);
 // Tell argon what local coordinate system you want.  The default coordinate
 // frame used by Argon is Cesium's FIXED frame, which is centered at the center
 // of the earth and oriented with the earth's axes.  
@@ -189,3 +189,7 @@ function renderFunc() {
         }
     }
 }
+
+function hideMe(elem) {
+    elem.style.display = 'none';
+}   

@@ -1,46 +1,70 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
 <head>
     <title>Directions</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
     <script src="../resources/lib/three/three.min.js"></script>
     <script src="../resources/lib/CSS3DArgonHUD.js"></script>
     <script src="../resources/lib/CSS3DArgonRenderer.js"></script>
     <script src="../resources/lib/argon.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.52/wavesurfer.min.js"></script>
     <link rel="stylesheet" href="./styles.css">
 </head>
-  <body>
+
+<body>
     <div id="argon">
-      <div onclick="hideMe(this)" id="description">
+        <!-- <div onclick="hideMe(this)" id="description">
         <h2>Six directions in HTML</h2>
         <h5>(click to dismiss)</h5>
         <p>This example displays a directional reference frame around the camera in Cartesian coordinates, using the EastUpSouth orientation for positive (x, y, z). A userLocation geospatial entity is created and positioned at the position of the user, and updated when the user's position changes. It uses HTML elements to put a text label at 200 meters in each of the negative/positive directions: x is west/east; y is down/up; z is north/south.</p>  
-      </div>
+      </div> -->
     </div>
-
-    <img src="" alt="Beach" class='triangle-clip'>
-
-    <div class='song-container'>
-      <div id="waveform"></div>
-      <button class="btn btn-primary" onclick="wavesurfer.playPause()">
-        Play
-      </button>
+    <img src="" alt="top-opacity" class='triangle-clip'>
+    <img src="" alt="bottom-opacity" class='bottom-clip'>
+    <!-- content -->
+    <div class="container no-padding main">
+        <div class="row">
+            <div class="col-xs-4">
+                <button type="button btn-default" class="btn btn-circle">
+                    <object class='test' type="image/svg+xml" data="question.svg">Your browser does not support SVGs</object>
+                </button>
+                <button type="button btn-default" class="btn btn-circle ">
+                    <object class='test' type="image/svg+xml" data="library.svg">Your browser does not support SVGs</object>
+                </button>
+            </div>
+            <div class="col-xs-4 center">
+                1 of 3
+            </div>
+            <div class="col-xs-4">
+            </div>
+        </div>
+        <div class="row push-to-bottom frame-explanation">
+            <div class="col-xs-12">
+                <div class='center-text'>
+                    Frame your phone over a pattern to hear music
+                </div>
+                <div class='row'>
+                    <div class="col-xs-2">
+                        <button type="button btn-default" class="btn" onclick="wavesurfer.playPause()">
+                            <object class='test' type="image/svg+xml" data="question.svg">Your browser does not support SVGs</object>
+                        </button>
+                    </div>
+                    <div class="col-xs-10">
+                        <div id="waveform"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.52/wavesurfer.min.js"></script>
 
-  </body>
+<script src="app.js"></script>
+<script src="extra.js"></script>
 
 
-	<script>
-		function hideMe(elem) {
-		    elem.style.display = 'none';
-		}	
-	</script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <script src="app.js"></script>
-  <script src="extra.js"></script>
 </html>
