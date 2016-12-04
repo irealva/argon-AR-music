@@ -64,6 +64,8 @@ var songArray = [
     }
 ];
 
+var prev = 'found';
+
 app.vuforia.isAvailable().then(function (available) {
     // vuforia not available on this platform
     if (!available) {
@@ -178,7 +180,6 @@ app.vuforia.isAvailable().then(function (available) {
                         }
                     }
                     // Change UI
-                    var prev = 'found';
                     if (found === null) {
                         if (prev === 'found') {
                             console.log("no song playing");
