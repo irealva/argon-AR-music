@@ -184,16 +184,16 @@ app.vuforia.isAvailable().then(function (available) {
                             console.log("no song playing");
                             hideMe(frameMusic);
                             showMe(frameText);
+                            prev = 'lost';
                         }
-                        prev = 'lost';
                     }
                     else {
                         if (prev === 'lost') {
                             console.log(found + " is playing");
                             hideMe(frameText);
                             showMe(frameMusic);
-                        }
-                        prev = 'found';   
+                            prev = 'found'; 
+                        } 
                     }
 
 
