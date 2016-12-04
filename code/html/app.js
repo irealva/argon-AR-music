@@ -178,7 +178,7 @@ app.vuforia.isAvailable().then(function (available) {
                         }
                     }
                     // Change UI
-                    var prev = null;
+                    var prev = 'found';
                     if (found === null) {
                         if (prev === 'found') {
                             console.log("no song playing");
