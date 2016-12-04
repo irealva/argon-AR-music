@@ -195,7 +195,7 @@ app.vuforia.isAvailable().then(function (available) {
                             hideMe(frameText);
 
                             var temp = songArray[found];
-                            // loadSong(temp.song);
+                            loadSong(temp.song);
                             showMe(frameMusic);
                             // wavesurfer.play();
                             prev = 'found'; 
