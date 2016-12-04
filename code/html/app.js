@@ -142,6 +142,7 @@ app.vuforia.isAvailable().then(function (available) {
                             loadSong(song.song);
                             showMe(frameMusic);
                             wavesurfer.play();
+                            break;
 
 
                         }
@@ -157,6 +158,7 @@ app.vuforia.isAvailable().then(function (available) {
                             hideMe(frameMusic);
                             wavesurfer.pause();
                             showMe(frameText);
+                            break;
                         }
                     }
 
