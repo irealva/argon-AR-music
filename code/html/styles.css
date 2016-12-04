@@ -89,6 +89,7 @@ clip-path: polygon(0 84%, 100% 55%, 100% 100%, 0% 100%);
 .push-to-bottom {
   bottom: 0;
     position: absolute;
+    width: 100%;
 }
 
 .center-text {
@@ -103,6 +104,18 @@ clip-path: polygon(0 84%, 100% 55%, 100% 100%, 0% 100%);
 
 .full-width {
   width: 100%;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.back-img {
+  z-index: 0;
+}
+
+.main {
+  z-index: 2000;
 }
 
 /*.song-container {

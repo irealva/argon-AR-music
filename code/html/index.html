@@ -15,8 +15,8 @@
 <body>
     <div id="argon">
         <div id="hud">
-            <img src="" alt="" class='triangle-clip'>
-            <img src="" alt="" class='bottom-clip'>
+            <img src="" alt="" class='back-img triangle-clip'>
+            <img src="" alt="" class='back-img bottom-clip'>
             <div class="container no-padding main">
                 <div class="row">
                     <div class="col-xs-4">
@@ -33,12 +33,14 @@
                     <div class="col-xs-4">
                     </div>
                 </div>
-                <div class="row push-to-bottom frame-explanation">
-                    <div class="col-xs-12">
-                        <div id='frame-text' class='center-text' >
+                <div class="row push-to-bottom no-margin frame-explanation">
+                    <div class="col-xs-12" >
+                        <div id='frame-text' class='row center-text' >
                             Frame your phone over a pattern to hear music
                         </div>
-                        <div id='frame-music' class='row center' style="display:none;">
+                    </div>
+                    <div class="col-xs-12" style="display:none;">
+                          <div id='frame-music' class='row center' >
                             <div class="col-xs-2">
                                 <button type="button btn-default" class="btn btn-play center" onclick="wavesurfer.playPause()">
                                     <object class='test' type="image/svg+xml" data="pause.svg">Your browser does not support SVGs</object>
@@ -49,6 +51,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
