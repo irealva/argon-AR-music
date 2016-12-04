@@ -1,3 +1,4 @@
+
 var ctx = document.createElement('canvas').getContext('2d');
     var linGrad = ctx.createLinearGradient(0, 64, 0, 200);
     linGrad.addColorStop(0.5, 'rgba(255, 255, 255, 1.000)');

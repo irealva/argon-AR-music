@@ -104,7 +104,11 @@ app.vuforia.isAvailable().then(function (available) {
                 // should be updated here.
                 app.context.updateEvent.addEventListener(function () {
 
-                    for (song of songArray) {
+
+                    var indexFound = null;
+                    var indexLost = null;
+                    for (var i = 0 ; i < songArray.length ; i++)
+                        var song = songArray[i];
                         // get the pose (in local coordinates) of the gvuBrochure target
                         var gvuBrochurePose = app.context.getEntityPose(song.entity);
 
@@ -138,11 +142,13 @@ app.vuforia.isAvailable().then(function (available) {
                             // v.setAttribute("style", "display: block;");
                             // v.play();
 
-                            hideMe(frameText);
-                            loadSong(song.song);
-                            showMe(frameMusic);
-                            wavesurfer.play();
-                            break;
+                            indexFound = i;
+
+                            // hideMe(frameText);
+                            // loadSong(song.song);
+                            // showMe(frameMusic);
+                            // wavesurfer.play();
+                            // break;
 
 
                         }
@@ -151,15 +157,17 @@ app.vuforia.isAvailable().then(function (available) {
                             // userLocation.add(argonTextObject);
                             console.log("Lost");
 
+                            indexLost = i;
+
                             // var v = document.getElementById('song');
                             // v.setAttribute("style", "display: none;");
                             // v.pause();
 
-                            hideMe(frameMusic);
-                            wavesurfer.pause();
-                            showMe(frameText);
-                            break;
+                            // hideMe(frameMusic);
+                            // wavesurfer.pause();
+                            // showMe(frameText);
                         }
+                        console.log("found: " + indexFound + ", lost: " + indexLost);
                     }
 
                 });
