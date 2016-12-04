@@ -74,6 +74,15 @@ clip-path: polygon(0 84%, 100% 55%, 100% 100%, 0% 100%);
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
 }
 
+.btn-play {
+  width: 10px;
+  background-color: transparent;
+}
+
+.pause {
+  fill: white;
+}
+
 .push-to-bottom {
   bottom: 0;
     position: absolute;
@@ -87,6 +96,10 @@ clip-path: polygon(0 84%, 100% 55%, 100% 100%, 0% 100%);
   padding-left: 40px;
     padding-right: 40px;
     padding-bottom: 30px;
+}
+
+.full-width {
+  width: 100%;
 }
 
 /*.song-container {

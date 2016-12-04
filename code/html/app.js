@@ -215,6 +215,7 @@ app.vuforia.isAvailable().then(function (available) {
                         // v.pause();
 
                         hideMe(frameMusic);
+                        wavesurfer.pause();
                         showMe(frameText);
                     }
 

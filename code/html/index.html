@@ -13,6 +13,8 @@
 </head>
 
 <body>
+    <img src="" alt="top-opacity" class='triangle-clip'>
+    <img src="" alt="bottom-opacity" class='bottom-clip'>
     <div id="argon">
         <div id="hud">
             <div class="container no-padding main">
@@ -31,15 +33,15 @@
                     <div class="col-xs-4">
                     </div>
                 </div>
-                <div class="row push-to-bottom frame-explanation">
+                <div class="row full-width push-to-bottom frame-explanation">
                     <div class="col-xs-12">
-                        <div id='frame-text' class='center-text'>
+                        <div id='frame-text' class='center-text' style="display:none;">
                             Frame your phone over a pattern to hear music
                         </div>
-                        <div id='frame-music' class='row' style="display:none;">
+                        <div id='frame-music' class='row center'>
                             <div class="col-xs-2">
-                                <button type="button btn-default" class="btn" onclick="wavesurfer.playPause()">
-                                    <object class='test' type="image/svg+xml" data="question.svg">Your browser does not support SVGs</object>
+                                <button type="button btn-default" class="btn btn-play center" onclick="wavesurfer.playPause()">
+                                    <object class='test' type="image/svg+xml" data="pause.svg">Your browser does not support SVGs</object>
                                 </button>
                             </div>
                             <div class="col-xs-10">
@@ -56,8 +58,6 @@
         <p>This example displays a directional reference frame around the camera in Cartesian coordinates, using the EastUpSouth orientation for positive (x, y, z). A userLocation geospatial entity is created and positioned at the position of the user, and updated when the user's position changes. It uses HTML elements to put a text label at 200 meters in each of the negative/positive directions: x is west/east; y is down/up; z is north/south.</p>  
       </div> -->
     </div>
-    <img src="" alt="top-opacity" class='triangle-clip'>
-    <img src="" alt="bottom-opacity" class='bottom-clip'>
     <!-- content -->
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
