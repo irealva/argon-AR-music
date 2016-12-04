@@ -136,7 +136,7 @@ app.vuforia.isAvailable().then(function (available) {
                         if (gvuBrochurePose.poseStatus & Argon.PoseStatus.FOUND) {
                             // gvuBrochureObject.add(argonTextObject);
                             // argonTextObject.position.z = 0;
-                            console.log("Found");
+                            console.log("Found " + i);
 
                             // var v = document.getElementById('song');
                             // v.setAttribute("style", "display: block;");
@@ -155,7 +155,7 @@ app.vuforia.isAvailable().then(function (available) {
                         else if (gvuBrochurePose.poseStatus & Argon.PoseStatus.LOST) {
                             // argonTextObject.position.z = -0.50;
                             // userLocation.add(argonTextObject);
-                            console.log("Lost");
+                            console.log("Lost " + i);
 
                             song.status = 'lost';
 
