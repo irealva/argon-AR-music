@@ -21,6 +21,10 @@
   opacity: 0;
 }
 
+.argon-view * {
+  pointer-events: all !important;
+}
+
 body, html {
   background-color: transparent;
 }

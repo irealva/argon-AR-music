@@ -16,6 +16,10 @@ var renderer = new THREE.CSS3DArgonRenderer();
 app.view.element.appendChild(renderer.domElement);
 // to easily control stuff on the display
 var hud = new THREE.CSS3DArgonHUD();
+app.view.element.appendChild(hud.domElement);
+
+var hudContent = document.getElementById('hud');
+hud.appendChild(hudContent);
 // We put some elements in the index.html, for convenience. 
 // Here, we retrieve the description box and move it to the 
 // the CSS3DArgonHUD hudElements[0].  We only put it in the left

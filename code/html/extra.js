@@ -22,3 +22,9 @@ wavesurfer.load('song2.mp3');
         });
     }
     
+
+/* buttons */
+
+$('#question').on('click', function(event) {
+  console.log("hi");
+});
