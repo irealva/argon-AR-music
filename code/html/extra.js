@@ -33,7 +33,24 @@ loadSong("song2.mp3");
 
 /* buttons */
 
+var saved = [];
+
 $('#question').on('click', function(event) {
   loadSong("song3.mp3");
   console.log("hi");
+});
+
+$('#add').on('click', function(event) {
+  var temp = null;
+  for (var i = 0 ; i < songArray.length ; i++) {
+      if (songArray[i].status === 'found') {
+          temp = songArray[i];
+          break;
+      }
+  }
+
+  console.log("add song");
+  if (temp != null) {
+    console.log(temp.artist, temp.title);
+  }
 });

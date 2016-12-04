@@ -55,14 +55,18 @@ var songArray = [
         trackable: 'bluestone',
         entity: null,
         status: 'lost',
-        el: document.getElementById('song2')
+        el: document.getElementById('song2'),
+        artist: "artist2",
+        title: "song2"
     },
     {
         song: 'song3.mp3',
         trackable: 'whitestone',
         entity: null,
         status: 'lost',
-        el: document.getElementById('song3')
+        el: document.getElementById('song3'),
+        artist: "artist3",
+        title: "song3"
     }
 ];
 
