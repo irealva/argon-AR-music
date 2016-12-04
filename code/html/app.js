@@ -132,6 +132,10 @@ userLocation.add(cssObjectZneg);
 
 /* VUFORIA SECTION */
 
+
+var frameText = document.getElementById('frame-text');
+var frameMusic = document.getElementById('frame-music');
+
 app.vuforia.isAvailable().then(function (available) {
     // vuforia not available on this platform
     if (!available) {
@@ -173,8 +177,8 @@ app.vuforia.isAvailable().then(function (available) {
                     // if the pose is known the target is visible, so set the
                     // THREE object to the location and orientation
                     if (gvuBrochurePose.poseStatus & Argon.PoseStatus.KNOWN) {
-                        gvuBrochureObject.position.copy(gvuBrochurePose.position);
-                        gvuBrochureObject.quaternion.copy(gvuBrochurePose.orientation);
+                        // gvuBrochureObject.position.copy(gvuBrochurePose.position);
+                        // gvuBrochureObject.quaternion.copy(gvuBrochurePose.orientation);
                         console.log("Known");
 
                         // var v = document.getElementById('song');
@@ -188,22 +192,30 @@ app.vuforia.isAvailable().then(function (available) {
                     // when the target is first lost after being seen, the status
                     // is LOST.  Here, we move the 3D text object back to the world
                     if (gvuBrochurePose.poseStatus & Argon.PoseStatus.FOUND) {
-                        gvuBrochureObject.add(argonTextObject);
-                        argonTextObject.position.z = 0;
+                        // gvuBrochureObject.add(argonTextObject);
+                        // argonTextObject.position.z = 0;
                         console.log("Found");
 
                         // var v = document.getElementById('song');
                         // v.setAttribute("style", "display: block;");
                         // v.play();
+
+                        hideMe(frameText);
+                        showMe(frameMusic);
+
+
                     }
                     else if (gvuBrochurePose.poseStatus & Argon.PoseStatus.LOST) {
-                        argonTextObject.position.z = -0.50;
-                        userLocation.add(argonTextObject);
+                        // argonTextObject.position.z = -0.50;
+                        // userLocation.add(argonTextObject);
                         console.log("Lost");
 
                         // var v = document.getElementById('song');
                         // v.setAttribute("style", "display: none;");
                         // v.pause();
+
+                        hideMe(frameMusic);
+                        showMe(frameText);
                     }
 
                 });
@@ -219,11 +231,6 @@ app.vuforia.isAvailable().then(function (available) {
 });
 
 /* END VUFORIA SECTION*/
-
-
-
-
-
 
 
 
@@ -295,4 +302,8 @@ function renderFunc() {
 
 function hideMe(elem) {
     elem.style.display = 'none';
-}   
+}  
+
+function showMe(elem) {
+    elem.style.display = 'block';
+} 
