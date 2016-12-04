@@ -54,3 +54,17 @@ $('#add').on('click', function(event) {
     console.log(temp.artist, temp.title);
   }
 });
+
+var list = document.getElementById('music-list');
+var main = document.getElementById('main');
+
+$('#back').on('click', function(event) {
+    hideMe(list);
+    showMe(main);
+});
+
+$('#library').on('click', function(event) {
+  hideMe(main);
+    showMe(list);
+});
+

@@ -17,49 +17,43 @@
         <div id="hud">
             <img src="" alt="" class='back-img triangle-clip'>
             <img src="" alt="" class='back-img bottom-clip'>
-            <div class="container no-padding main">
+            <div id='main' class="container no-padding main" style='display: none;'>
                 <div class="row">
                     <div class="col-xs-4">
                         <button id='question' type="button btn-default" class="btn btn-circle">
                             <object class='test' type="image/svg+xml" data="question.svg">Your browser does not support SVGs</object>
                         </button>
-                        <button type="button btn-default" class="btn btn-circle ">
+                        <button id='library' type="button btn-default" class="btn btn-circle ">
                             <object class='test' type="image/svg+xml" data="library.svg">Your browser does not support SVGs</object>
                         </button>
                     </div>
                     <div class="col-xs-4 center">
-                        32
+                        33
                     </div>
                     <div class="col-xs-4">
                     </div>
                 </div>
-            </div>
-            <div class="row push-to-bottom no-margin frame-explanation">
-                <div id='frame-text' class="col-xs-12" style='display: none;'>
-                    <div class='row center-text'>
-                        Frame your phone over a pattern to hear music
-                    </div>
-                </div>
-
-                <div id='frame-music' class="col-xs-12">
-                    <div class="row" >
-                      <button id='add' type="button btn-default" class="btn">
-                            Add
-                            <object class='test' type="image/svg+xml" data="question.svg">Your browser does not support SVGs</object>
-                        </button>
-                    </div>
-
-                    <div class="row" >
-                        <div id="player">
-                            <audio id='song2' src="./song2.mp3" autoplay controls></audio>
-                            <audio id='song3' src="./song3.mp3" autoplay controls style='display: none;'></audio>
+                <div class="row push-to-bottom no-margin frame-explanation">
+                    <div id='frame-text' class="col-xs-12" style='display: none;'>
+                        <div class='row center-text'>
+                            Frame your phone over a pattern to hear music
                         </div>
                     </div>
-                </div>
-
-
-
-<!--                 <div class="row" >
+                    <div id='frame-music' class="col-xs-12">
+                        <div class="row">
+                            <button id='add' type="button btn-default" class="btn btn-circle-large">
+                                Add
+                                <object class='test' type="image/svg+xml" data="question.svg">Your browser does not support SVGs</object>
+                            </button>
+                        </div>
+                        <div class="row">
+                            <div id="player">
+                                <audio id='song2' src="./song2.mp3" autoplay controls></audio>
+                                <audio id='song3' src="./song3.mp3" autoplay controls style='display: none;'></audio>
+                            </div>
+                        </div>
+                    </div>
+                    <!--                 <div class="row" >
                     <div class="col-xs-12">
                         <button id='add' type="button btn-default" class="btn">
                             Add
@@ -83,6 +77,36 @@
                         </div>
                     </div>
                 </div> -->
+                </div>
+            </div>
+            <div id='music-list' class="container no-padding music-list">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <button id='back' type="button btn-default" class="btn btn-circle">
+                            <object class='test' type="image/svg+xml" data="question.svg">Your browser does not support SVGs</object>
+                        </button>
+                    </div>
+                    <div class="col-xs-4 center">
+                        Beats
+                    </div>
+                    <div class="col-xs-4">
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12">
+                      Music List
+                  </div>
+                </div>
+
+                <ul class="list-group">
+                  <li class="list-group-item">Cras justo odio</li>
+                  <li class="list-group-item">Dapibus ac facilisis in</li>
+                  <li class="list-group-item">Morbi leo risus</li>
+                  <li class="list-group-item">Porta ac consectetur ac</li>
+                  <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+
+
             </div>
         </div>
     </div>
