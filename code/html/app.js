@@ -183,7 +183,7 @@ app.vuforia.isAvailable().then(function (available) {
                     if (found === null) {
                         if (prev === 'found') {
                             console.log("no song playing");
-                            wavesurfer.pause();
+                            // wavesurfer.pause();
                             hideMe(frameMusic);
                             showMe(frameText);
                             prev = 'lost';
@@ -195,9 +195,9 @@ app.vuforia.isAvailable().then(function (available) {
                             hideMe(frameText);
 
                             var temp = songArray[found];
-                            loadSong(temp.song);
+                            // loadSong(temp.song);
                             showMe(frameMusic);
-                            wavesurfer.play();
+                            // wavesurfer.play();
                             prev = 'found'; 
                         } 
                     }
