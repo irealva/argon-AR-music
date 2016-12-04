@@ -172,7 +172,8 @@ app.vuforia.isAvailable().then(function (available) {
                     // Search through songs to see which one has been found
                     var found = null;
                     for (var i = 0 ; i < songArray.length ; i++) {
-                        if (song.status === 'found') {
+                        var temp = songArray[i];
+                        if (temp.status === 'found') {
                             found = i;
                         }
                     }
