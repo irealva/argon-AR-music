@@ -49,6 +49,18 @@ app.context.setDefaultReferenceFrame(app.context.localOriginEastUpSouth);
 var frameText = document.getElementById('frame-text');
 var frameMusic = document.getElementById('frame-music');
 var mainSongPlaying = null;
+var songArray = [
+    {
+        song: 'song2.mp3',
+        trackable: 'bluestone',
+        entity: null
+    },
+    {
+        song: 'song3.mp3',
+        trackable: 'whitestone',
+        entity: null
+    }
+];
 
 app.vuforia.isAvailable().then(function (available) {
     // vuforia not available on this platform
@@ -75,7 +87,15 @@ app.vuforia.isAvailable().then(function (available) {
                 // coordinate frame relative to the camera.  Because they are Cesium
                 // entities, we can ask for their pose in any coordinate frame we know
                 // about.
-                var gvuBrochureEntity = app.context.subscribeToEntityById(trackables["bluestone"].id);
+                // var gvuBrochureEntity = app.context.subscribeToEntityById(trackables["bluestone"].id);
+
+                for (song of songArray) {
+                    song.entity = app.context.subscribeToEntityById(trackables[song.trackable].id);
+                }
+                // entityArray.push(app.context.subscribeToEntityById(trackables["bluestone"].id));
+                // entityArray.push(app.context.subscribeToEntityById(trackables["whitestone"].id));
+
+
                 // create a THREE object to put on the trackable
                 // var gvuBrochureObject = new THREE.Object3D;
                 // scene.add(gvuBrochureObject);
@@ -83,57 +103,61 @@ app.vuforia.isAvailable().then(function (available) {
                 // rendered, before the renderEvent.  The state of your application
                 // should be updated here.
                 app.context.updateEvent.addEventListener(function () {
-                    // get the pose (in local coordinates) of the gvuBrochure target
-                    var gvuBrochurePose = app.context.getEntityPose(gvuBrochureEntity);
+
+                    for (song of songArray) {
+                        // get the pose (in local coordinates) of the gvuBrochure target
+                        var gvuBrochurePose = app.context.getEntityPose(song.entity);
 
 
-                    /* SONG 1*/
-                    // if the pose is known the target is visible, so set the
-                    // THREE object to the location and orientation
-                    /*
-                    if (gvuBrochurePose.poseStatus & Argon.PoseStatus.KNOWN) {
-                        // gvuBrochureObject.position.copy(gvuBrochurePose.position);
-                        // gvuBrochureObject.quaternion.copy(gvuBrochurePose.orientation);
-                        console.log("Known");
+                        /* SONG 1*/
+                        // if the pose is known the target is visible, so set the
+                        // THREE object to the location and orientation
+                        /*
+                        if (gvuBrochurePose.poseStatus & Argon.PoseStatus.KNOWN) {
+                            // gvuBrochureObject.position.copy(gvuBrochurePose.position);
+                            // gvuBrochureObject.quaternion.copy(gvuBrochurePose.orientation);
+                            console.log("Known");
 
-                        // var v = document.getElementById('song');
-                        // v.setAttribute("style", "display: block;");
-                        // v.play();
+                            // var v = document.getElementById('song');
+                            // v.setAttribute("style", "display: block;");
+                            // v.play();
 
-                    }
-                    */
-                    // when the target is first seen after not being seen, the
-                    // status is FOUND.  Here, we move the 3D text object from the
-                    // world to the target.
-                    // when the target is first lost after being seen, the status
-                    // is LOST.  Here, we move the 3D text object back to the world
-                    if (gvuBrochurePose.poseStatus & Argon.PoseStatus.FOUND) {
-                        // gvuBrochureObject.add(argonTextObject);
-                        // argonTextObject.position.z = 0;
-                        console.log("Found");
+                        }
+                        */
+                        // when the target is first seen after not being seen, the
+                        // status is FOUND.  Here, we move the 3D text object from the
+                        // world to the target.
+                        // when the target is first lost after being seen, the status
+                        // is LOST.  Here, we move the 3D text object back to the world
+                        if (gvuBrochurePose.poseStatus & Argon.PoseStatus.FOUND) {
+                            // gvuBrochureObject.add(argonTextObject);
+                            // argonTextObject.position.z = 0;
+                            console.log("Found");
 
-                        // var v = document.getElementById('song');
-                        // v.setAttribute("style", "display: block;");
-                        // v.play();
+                            // var v = document.getElementById('song');
+                            // v.setAttribute("style", "display: block;");
+                            // v.play();
 
-                        hideMe(frameText);
-                        showMe(frameMusic);
-                        wavesurfer.play();
+                            hideMe(frameText);
+                            loadSong(song.song);
+                            showMe(frameMusic);
+                            wavesurfer.play();
 
 
-                    }
-                    else if (gvuBrochurePose.poseStatus & Argon.PoseStatus.LOST) {
-                        // argonTextObject.position.z = -0.50;
-                        // userLocation.add(argonTextObject);
-                        console.log("Lost");
+                        }
+                        else if (gvuBrochurePose.poseStatus & Argon.PoseStatus.LOST) {
+                            // argonTextObject.position.z = -0.50;
+                            // userLocation.add(argonTextObject);
+                            console.log("Lost");
 
-                        // var v = document.getElementById('song');
-                        // v.setAttribute("style", "display: none;");
-                        // v.pause();
+                            // var v = document.getElementById('song');
+                            // v.setAttribute("style", "display: none;");
+                            // v.pause();
 
-                        hideMe(frameMusic);
-                        wavesurfer.pause();
-                        showMe(frameText);
+                            hideMe(frameMusic);
+                            wavesurfer.pause();
+                            showMe(frameText);
+                        }
                     }
 
                 });

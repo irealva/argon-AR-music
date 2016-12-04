@@ -13,7 +13,11 @@ var wavesurfer = WaveSurfer.create({
       height: 20
 });
 
-wavesurfer.load('song2.mp3');
+function loadSong(string) {
+  wavesurfer.load(string);
+}
+
+loadSong("song2.mp3");
 
 // Regions
     if (wavesurfer.enableDragSelection) {
@@ -26,5 +30,6 @@ wavesurfer.load('song2.mp3');
 /* buttons */
 
 $('#question').on('click', function(event) {
+  loadSong("song3.mp3");
   console.log("hi");
 });
