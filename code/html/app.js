@@ -48,6 +48,7 @@ app.context.setDefaultReferenceFrame(app.context.localOriginEastUpSouth);
 
 var frameText = document.getElementById('frame-text');
 var frameMusic = document.getElementById('frame-music');
+var mainSongPlaying = null;
 
 app.vuforia.isAvailable().then(function (available) {
     // vuforia not available on this platform
@@ -89,6 +90,7 @@ app.vuforia.isAvailable().then(function (available) {
                     /* SONG 1*/
                     // if the pose is known the target is visible, so set the
                     // THREE object to the location and orientation
+                    /*
                     if (gvuBrochurePose.poseStatus & Argon.PoseStatus.KNOWN) {
                         // gvuBrochureObject.position.copy(gvuBrochurePose.position);
                         // gvuBrochureObject.quaternion.copy(gvuBrochurePose.orientation);
@@ -99,6 +101,7 @@ app.vuforia.isAvailable().then(function (available) {
                         // v.play();
 
                     }
+                    */
                     // when the target is first seen after not being seen, the
                     // status is FOUND.  Here, we move the 3D text object from the
                     // world to the target.
@@ -115,6 +118,7 @@ app.vuforia.isAvailable().then(function (available) {
 
                         hideMe(frameText);
                         showMe(frameMusic);
+                        wavesurfer.play();
 
 
                     }
