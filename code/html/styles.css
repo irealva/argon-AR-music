@@ -42,7 +42,8 @@ img {
  /* -webkit-clip-path: polygon(0% 0%, 0% 100%, 50% 87%, 21% 49%, 47% 13%, 75% 48%, 50% 87%, 0 100%, 100% 100%, 100% 0%);
   clip-path: polygon(0% 0%, 0% 100%, 50% 87%, 21% 49%, 47% 13%, 75% 48%, 50% 87%, 0 100%, 100% 100%, 100% 0%);*/
   -webkit-clip-path: polygon(100% 0, 0 0, 0 28%);
-clip-path: polygon(100% 0, 0 0, 0 28%);
+  clip-path: polygon(100% 0, 0 0, 0 28%);
+  top: 0;
 }
 
 .bottom-clip {
