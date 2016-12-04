@@ -107,8 +107,6 @@ app.vuforia.isAvailable().then(function (available) {
                 app.context.updateEvent.addEventListener(function () {
 
 
-                    var indexFound = null;
-                    var indexLost = null;
                     for (var i = 0 ; i < songArray.length ; i++) {
                         var song = songArray[i];
                         // get the pose (in local coordinates) of the gvuBrochure target
@@ -144,7 +142,6 @@ app.vuforia.isAvailable().then(function (available) {
                             // v.setAttribute("style", "display: block;");
                             // v.play();
 
-                            indexFound = i;
                             song.status = found;
 
                             // hideMe(frameText);
@@ -160,7 +157,6 @@ app.vuforia.isAvailable().then(function (available) {
                             // userLocation.add(argonTextObject);
                             console.log("Lost");
 
-                            indexLost = i;
                             song.status = lost;
 
                             // var v = document.getElementById('song');
@@ -172,7 +168,21 @@ app.vuforia.isAvailable().then(function (available) {
                             // showMe(frameText);
                         }                        
                     }
-                    console.log("found: " + indexFound + ", lost: " + indexLost);
+
+                    // Search through songs to see which one has been found
+                    var found = null;
+                    for (var i = 0 ; i < songArray.length ; i++) {
+                        if (song.status === 'found') {
+                            found = i;
+                        }
+                    }
+                    if (found === null) {
+                        console.log("no song playing");
+                    }
+                    else {
+                        console.log(found + " is playing");
+                    }
+
 
 
                 });
