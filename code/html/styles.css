@@ -122,6 +122,19 @@ clip-path: polygon(0 84%, 100% 55%, 100% 100%, 0% 100%);
   float: right;
 }
 
+#player {
+    position:relative;
+    top:10px;
+    width:240px;
+    overflow: hidden;
+    direction: ltr !important;
+    border-top-right-radius: 0.5em 0.5em;
+    border-bottom-right-radius: 1em 0.7em;
+}
+
+audio {
+  width: 380px;
+}
 /*.song-container {
   position: absolute;
     width: 100%;

@@ -54,13 +54,15 @@ var songArray = [
         song: 'song2.mp3',
         trackable: 'bluestone',
         entity: null,
-        status: 'lost'
+        status: 'lost',
+        el: document.getElementById('song2')
     },
     {
         song: 'song3.mp3',
         trackable: 'whitestone',
         entity: null,
-        status: 'lost'
+        status: 'lost',
+        el: document.getElementById('song3')
     }
 ];
 
@@ -183,9 +185,18 @@ app.vuforia.isAvailable().then(function (available) {
                     if (found === null) {
                         if (prev === 'found') {
                             console.log("no song playing");
-                            wavesurfer.pause();
+                            // wavesurfer.pause();
+                            // hideMe(frameMusic);
+                            // showMe(frameText);
+
+                            // Hide all the audio divs
                             hideMe(frameMusic);
                             showMe(frameText);
+                            for (var s of songArray) {
+                                s.el.pause();
+                                hideMe(s.el);
+                            }
+
                             prev = 'lost';
                         }
                     }
@@ -194,12 +205,15 @@ app.vuforia.isAvailable().then(function (available) {
                             console.log(found + " is playing");
                             hideMe(frameText);
 
-                            var temp = songArray[found];
-                            loadSong(temp.song);
                             showMe(frameMusic);
-                            wavesurfer.on('ready', function () {
-                                wavesurfer.play();
-                            });
+                            var temp = songArray[found];
+                            showMe(temp.el);
+                            temp.el.play();
+                            // loadSong(temp.song);
+                            // showMe(frameMusic);
+                            // wavesurfer.on('ready', function () {
+                            //     wavesurfer.play();
+                            // });
                             // wavesurfer.play();
                             prev = 'found'; 
                         } 
