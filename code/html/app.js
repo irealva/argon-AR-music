@@ -76,8 +76,8 @@ app.vuforia.isAvailable().then(function (available) {
                 // about.
                 var gvuBrochureEntity = app.context.subscribeToEntityById(trackables["bluestone"].id);
                 // create a THREE object to put on the trackable
-                var gvuBrochureObject = new THREE.Object3D;
-                scene.add(gvuBrochureObject);
+                // var gvuBrochureObject = new THREE.Object3D;
+                // scene.add(gvuBrochureObject);
                 // the updateEvent is called each time the 3D world should be
                 // rendered, before the renderEvent.  The state of your application
                 // should be updated here.
