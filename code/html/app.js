@@ -53,12 +53,14 @@ var songArray = [
     {
         song: 'song2.mp3',
         trackable: 'bluestone',
-        entity: null
+        entity: null,
+        status: lost
     },
     {
         song: 'song3.mp3',
         trackable: 'whitestone',
-        entity: null
+        entity: null,
+        status: lost
     }
 ];
 
@@ -143,6 +145,7 @@ app.vuforia.isAvailable().then(function (available) {
                             // v.play();
 
                             indexFound = i;
+                            song.status = found;
 
                             // hideMe(frameText);
                             // loadSong(song.song);
@@ -158,6 +161,7 @@ app.vuforia.isAvailable().then(function (available) {
                             console.log("Lost");
 
                             indexLost = i;
+                            song.status = lost;
 
                             // var v = document.getElementById('song');
                             // v.setAttribute("style", "display: none;");
@@ -166,9 +170,10 @@ app.vuforia.isAvailable().then(function (available) {
                             // hideMe(frameMusic);
                             // wavesurfer.pause();
                             // showMe(frameText);
-                        }
-                        console.log("found: " + indexFound + ", lost: " + indexLost);
+                        }                        
                     }
+                    console.log("found: " + indexFound + ", lost: " + indexLost);
+
 
                 });
             }).catch(function (err) {
