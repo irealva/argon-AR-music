@@ -107,7 +107,7 @@ app.vuforia.isAvailable().then(function (available) {
 
                     var indexFound = null;
                     var indexLost = null;
-                    for (var i = 0 ; i < songArray.length ; i++)
+                    for (var i = 0 ; i < songArray.length ; i++) {
                         var song = songArray[i];
                         // get the pose (in local coordinates) of the gvuBrochure target
                         var gvuBrochurePose = app.context.getEntityPose(song.entity);
