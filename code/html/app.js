@@ -177,11 +177,23 @@ app.vuforia.isAvailable().then(function (available) {
                             found = i;
                         }
                     }
+                    // Change UI
+                    var prev = null;
                     if (found === null) {
-                        console.log("no song playing");
+                        if (prev === 'found') {
+                            console.log("no song playing");
+                            hideMe(frameMusic);
+                            showMe(frameText);
+                        }
+                        prev = 'lost';
                     }
                     else {
-                        console.log(found + " is playing");
+                        if (prev === 'lost') {
+                            console.log(found + " is playing");
+                            hideMe(frameText);
+                            showMe(frameMusic);
+                        }
+                        prev = 'found';   
                     }
 
 
