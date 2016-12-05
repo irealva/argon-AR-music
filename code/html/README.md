@@ -10,6 +10,7 @@ Because I am using Vuforia image targets that have been configured to work only 
 To access an online version of the app:
 1. Download the Argon browser for an iPhone (currently the only way to view AR content created with web technologies): https://itunes.apple.com/us/app/argon3/id944297993?mt=8
 2. Navigate to https://irealva.github.io/argon-AR-music/code/html/
+3. Open one of the images in the 'imagetargets' folder and point your phone towards it
 
 ## Problems encountered
 
