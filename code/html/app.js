@@ -194,7 +194,11 @@ app.vuforia.isAvailable().then(function (available) {
                             // showMe(frameText);
 
                             // Hide all the audio divs
-                            destroySketch();
+
+                            if (myp5 !== undefined ){
+                                destroySketch();
+                            }
+
                             hideMe(frameMusic);
                             showMe(frameText);
                             for (var s of songArray) {
@@ -214,6 +218,7 @@ app.vuforia.isAvailable().then(function (available) {
                             var temp = songArray[found];
                             showMe(temp.el);
                             temp.el.play();
+                            // console.log(myp5);
                             createSketch();
                             // loadSong(temp.song);
                             // showMe(frameMusic);
