@@ -31,7 +31,7 @@ var s = function( p ) {
           this.drawingContext.moveTo(0,148);
             this.drawingContext.lineTo(320,0);
             this.drawingContext.lineTo(320,280);
-            this.drawingContext.lineTo(0,420;
+            this.drawingContext.lineTo(0,420);
             this.drawingContext.fill();
           this.drawingContext.clip();
 
