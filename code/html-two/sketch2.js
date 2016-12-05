@@ -100,6 +100,7 @@ function createSketch () {
 // createSketch();
 
 function removeSketch () {
+  console.log("removing two js sketch");
   container.remove();
 }
 

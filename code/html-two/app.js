@@ -132,7 +132,8 @@ app.vuforia.isAvailable().then(function (available) {
                         if (prev === 'found') {
                             console.log("no song playing");
 
-                            if (myp5 !== undefined ){
+                            // if (myp5 !== undefined ){
+                            if (container !== undefined) {
                                 // destroySketch();
                                 removeSketch();
                             }
@@ -281,22 +282,24 @@ $('#library').on('click', function(event) {
   hideMe(back1);
   hideMe(back2);
     showMe(list);
+  // createSketch();
 });
 
 // Help button
 $('#question').on('click', function(event) {
   // loadSong("song3.mp3");
   // console.log("hi");
+  // removeSketch();
 });
 
 // Creates a processing animation when a song is tracked
-function createSketch() {
-  myp5 = new p5(s, 'myP5');
-}
+// function createSketch() {
+//   myp5 = new p5(s, 'myP5');
+// }
 
-// Removes the processing sketch when we lose track of a song
-function destroySketch() {
-  myp5.remove();
-}
+// // Removes the processing sketch when we lose track of a song
+// function destroySketch() {
+//   myp5.remove();
+// }
 
 
