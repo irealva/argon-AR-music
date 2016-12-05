@@ -28,10 +28,10 @@ var s = function( p ) {
 
         this.drawingContext.beginPath();
           // this.drawingContext.arc(30,50,20, 0, 2 * Math.PI, false);
-          this.drawingContext.moveTo(0,158);
+          this.drawingContext.moveTo(0,148);
             this.drawingContext.lineTo(320,0);
-            this.drawingContext.lineTo(320,314);
-            this.drawingContext.lineTo(0,478);
+            this.drawingContext.lineTo(320,280);
+            this.drawingContext.lineTo(0,420;
             this.drawingContext.fill();
           this.drawingContext.clip();
 

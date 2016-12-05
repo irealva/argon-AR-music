@@ -35,7 +35,6 @@ loadSong("song2.mp3");
 
 var saved = [];
 
-
 $('#add').on('click', function(event) {
   var temp = null;
   for (var i = 0 ; i < songArray.length ; i++) {
@@ -47,7 +46,9 @@ $('#add').on('click', function(event) {
 
   console.log("add song");
   if (temp != null) {
-    console.log(temp.artist, temp.title);
+      var newSong = "<li class='list-group-item'>" + temp.artist + " - " + temp.title + "</li>";
+      $('#song-list').append(newSong);
+      console.log(temp.artist, temp.title);
   }
 });
 
