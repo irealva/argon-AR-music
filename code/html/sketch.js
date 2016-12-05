@@ -18,11 +18,12 @@ var s = function( p ) {
 
     p.setup = function() {
         p.createCanvas(320, 580);
-        p.background(255);
+        // p.background(255);
         t = 0;
 
         console.log(this.drawingContext);
         // this.drawingContext.clearRect(0 , 0, width, height);
+
 
 
         this.drawingContext.beginPath();
@@ -33,7 +34,9 @@ var s = function( p ) {
             this.drawingContext.lineTo(0,478);
             this.drawingContext.fill();
           this.drawingContext.clip();
-          this.fillStyle = "rgba(0, 0, 200, 0.5)";
+
+          this.drawingContext.clearRect(0 , 0, width, height);
+          // this.fillStyle = "rgba(0, 0, 0, 0.0)";
     }
 
     p.draw = function() {
@@ -76,6 +79,7 @@ var s = function( p ) {
                 p.endShape(p.CLOSE);
             }
         }
+
 
     }
 
