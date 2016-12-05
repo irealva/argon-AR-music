@@ -22,7 +22,13 @@ In consideration of time, there were a few things I wanted, but did not get a ch
 
 ## Relevance to course topics
 
+Because I was venturing into a medium that is not well developed yet, a lot of this project consisted in simply figuring out how to work within an AR context and what UI would make sense for a project like this. I was trying to keep in mind principles from the mobile & ubicomp lecture, in exploring new interaction techniques with the devices we carry everyday. Though the final code turned out to be not so long, I went through many many iterations to understand how the 3D world of AR works (the camera, user, and scene tracking are all in 3D), as well as how to add content that would be translucent to the scene and appropriately viewable. 
 
+In using a frame to guide the user on how to position an image tracker, as well as a p5.js animation to signal when an image has been successfully recognized, I ventured into the topic of drawing, recovery from damage, and event handling. I had to make sure that all the elements were drawn in exactly the right order so as to not hide the reality behind all of the divs (i.e. a lot of transparent and clipped material). I also ended up clipping parts of my canvas to make it fit to the UI I was going for. 
+
+I even encounctered issues of frame rates on mobile phones. The p5.js animation works much better on a desktop, but runs significantly slower on a phone, even after I spent some time optimizing it. 
+
+One open question I have is how fitts law applies to a use case like this... I was trying to keep in mind how to make the interaction easy and error free for the user, but in many ways the Neilsen Heuristics proved to be more useful. 
 
 ## Online sources used
 
