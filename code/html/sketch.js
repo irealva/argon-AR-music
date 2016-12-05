@@ -34,12 +34,12 @@ var s = function( p ) {
         p.randomSeed(actRandomSeed);
 
         for (var gridY = 0; gridY < tileCount; gridY++) {
-        	// x = ranNextX(x);
-      			// y = ranNextY(y);
+            // x = ranNextX(x);
+                // y = ranNextY(y);
 
-      			x = width * p.noise(t+10);
-      			y = height * p.noise(t+20);
-      			t = t + 0.001;
+                x = width * p.noise(t+10);
+                y = height * p.noise(t+20);
+                t = t + 0.001;
 
             for (var gridX = 0; gridX < tileCount; gridX++) {
 
