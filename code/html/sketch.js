@@ -33,6 +33,7 @@ var s = function( p ) {
             this.drawingContext.lineTo(0,478);
             this.drawingContext.fill();
           this.drawingContext.clip();
+          this.fillStyle = "rgba(0, 0, 200, 0.5)";
     }
 
     p.draw = function() {

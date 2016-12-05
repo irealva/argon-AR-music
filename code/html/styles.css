@@ -129,7 +129,8 @@ clip-path: polygon(0 84%, 100% 55%, 100% 100%, 0% 100%);
 #myP5 {
   z-index: -1;
   /*top: 160px;
-  po*/sition:absolute;
+  position:absolute;*/
+  position: absolute;
 }
 
 .back-img {
