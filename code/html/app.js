@@ -54,6 +54,15 @@ var songArray = [
         el: document.getElementById('song3'),
         artist: "artist3",
         title: "song3"
+    },
+    {
+        song: 'song4.mp3',
+        trackable: 'redstone',
+        entity: null,
+        status: 'lost',
+        el: document.getElementById('song4'),
+        artist: "artist4",
+        title: "song4"
     }
 ];
 
@@ -168,29 +177,22 @@ app.vuforia.isAvailable().then(function (available) {
 
 /* Rendering section */
 
-// the updateEvent is called each time the 3D world should be
-// rendered, before the renderEvent.  The state of your application
-// should be updated here.
+// Update is called each time the AR world should be rerendered
 app.updateEvent.addEventListener(function () {
-    // get the position and orientation (the "pose") of the user
-    // in the local coordinate frame.
+    // Get the position and orientation of the user
     var userPose = app.context.getEntityPose(app.context.user);
-    // assuming we know the user's pose, set the position of our 
-    // THREE user object to match it
+    // Set the position of our target in relation to user
     if (userPose.poseStatus & Argon.PoseStatus.KNOWN) {
         userLocation.position.copy(userPose.position);
     }
 });
-// for the CSS renderer, we want to use requestAnimationFrame to 
-// limit the number of repairs of the DOM.  Otherwise, as the 
-// DOM elements are updated, extra repairs of the DOM could be 
-// initiated.  Extra repairs do not appear to happen within the 
-// animation callback.
+
+// Limit the number of calls to the DOM by checking if there is a new 
+// animation to render
 var viewport = null;
 var subViews = null;
 var rAFpending = false;
 app.renderEvent.addEventListener(function () {
-    // only schedule a new callback if the old one has completed
     if (!rAFpending) {
         rAFpending = true;
         viewport = app.view.getViewport();
@@ -198,34 +200,30 @@ app.renderEvent.addEventListener(function () {
         window.requestAnimationFrame(renderFunc);
     }
 });
-// the animation callback.  
+
+// Animation callback
 function renderFunc() {
-    // if we have 1 subView, we're in mono mode.  If more, stereo.
     var monoMode = subViews.length == 1;
     rAFpending = false;
-    // set the renderer to know the current size of the viewport.
-    // This is the full size of the viewport, which would include
-    // both views if we are in stereo viewing mode
+
+    // Renderer has to know size of viewport
     renderer.setSize(viewport.width, viewport.height);
     hud.setSize(viewport.width, viewport.height);
-    // there is 1 subview in monocular mode, 2 in stereo mode
+
     for (var _i = 0, subViews_1 = subViews; _i < subViews_1.length; _i++) {
         var subview = subViews_1[_i];
-        // set the position and orientation of the camera for 
-        // this subview
+        // Set position and orientation of camera
         camera.position.copy(subview.pose.position);
         camera.quaternion.copy(subview.pose.orientation);
-        // the underlying system provide a full projection matrix
-        // for the camera.  Use it, and then update the FOV of the 
-        // camera from it (needed by the CSS Perspective DIV)
         camera.projectionMatrix.fromArray(subview.projectionMatrix);
         camera.fov = subview.frustum.fovy * 180 / Math.PI;
-        // set the viewport for this view
+
+        // Set viewport
         var _a = subview.viewport, x = _a.x, y = _a.y, width = _a.width, height = _a.height;
         renderer.setViewport(x, y, width, height, subview.index);
-        // render this view.
+
+        // Render view
         renderer.render(scene, camera, subview.index);
-        // adjust the hud, but only in mono
         if (monoMode) {
             hud.setViewport(x, y, width, height, subview.index);
             hud.render(subview.index);
@@ -233,8 +231,8 @@ function renderFunc() {
     }
 }
 
-/* Helper functions */
 
+/* Helper functions */
 
 var list = document.getElementById('music-list');
 var main = document.getElementById('main');

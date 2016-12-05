@@ -1,8 +1,10 @@
-// console.log(HSB);
+/* sketch.js
+ * Processing sketch to show a simple animation when our target is located
+ */
 
-//A conversion to "instance mode" looks like this:
-
-var s = function( p ) {
+// Using p5.js's instance mode so names are not 
+// declared in global namespace
+var s = function(p) {
 
     var tileCount = 8;
     var rectSize = 50;
@@ -18,25 +20,19 @@ var s = function( p ) {
 
     p.setup = function() {
         p.createCanvas(320, 580);
-        // p.background(255);
         t = 0;
 
-        console.log(this.drawingContext);
-        // this.drawingContext.clearRect(0 , 0, width, height);
-
-
-
+        // Using the canvas drawing context to set some clip paths for th canvas
         this.drawingContext.beginPath();
-          // this.drawingContext.arc(30,50,20, 0, 2 * Math.PI, false);
-          this.drawingContext.moveTo(0,148);
-            this.drawingContext.lineTo(320,0);
-            this.drawingContext.lineTo(320,280);
-            this.drawingContext.lineTo(0,420);
-            this.drawingContext.fill();
-          this.drawingContext.clip();
+        this.drawingContext.moveTo(0, 148);
+        this.drawingContext.lineTo(320, 0);
+        this.drawingContext.lineTo(320, 280);
+        this.drawingContext.lineTo(0, 420);
+        this.drawingContext.fill();
+        this.drawingContext.clip();
 
-          this.drawingContext.clearRect(0 , 0, width, height);
-          // this.fillStyle = "rgba(0, 0, 0, 0.0)";
+        // Making context background transparent
+        this.drawingContext.clearRect(0, 0, width, height);
     }
 
     p.draw = function() {
@@ -50,12 +46,10 @@ var s = function( p ) {
         p.randomSeed(actRandomSeed);
 
         for (var gridY = 0; gridY < tileCount; gridY++) {
-            // x = ranNextX(x);
-                // y = ranNextY(y);
-
-                x = width * p.noise(t+10);
-                y = height * p.noise(t+20);
-                t = t + 0.001;
+            // Using perlin noise to move around the verteces
+            x = width * p.noise(t + 10);
+            y = height * p.noise(t + 20);
+            t = t + 0.001;
 
             for (var gridX = 0; gridX < tileCount; gridX++) {
 
@@ -79,24 +73,5 @@ var s = function( p ) {
                 p.endShape(p.CLOSE);
             }
         }
-
-
     }
-
-    // function mousePressed() {
-    //     console.log("remove");
-    //   remove(); // remove whole sketch on mouse press
-    // }
-
-    // function keyPressed() {
-    //     console.log("redraw");
-    //   if (keyCode == UP_ARROW) {
-    //     setup();
-    //     redraw();
-    //   } 
-    //   return false; // prevent default
-    // }
 }
-
-// var myp5 = new p5(s, 'myP5');
-
