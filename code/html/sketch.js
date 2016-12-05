@@ -1,5 +1,7 @@
 // console.log(HSB);
 
+//A conversion to "instance mode" looks like this:
+
 var s = function( p ) {
 
     var tileCount = 12;
@@ -8,23 +10,33 @@ var s = function( p ) {
     var actRandomSeed = 0;
 
     var width = 320;
-    var height = 568;
+    var height = 580;
 
     var x = null;
     var y = null;
     var t;
 
     p.setup = function() {
-        p.createCanvas(320, 568);
+        p.createCanvas(320, 580);
         p.background(255);
         t = 0;
 
-        // frameRate(10);
+        console.log(this.drawingContext);
+        // this.drawingContext.clearRect(0 , 0, width, height);
+
+
+        this.drawingContext.beginPath();
+          // this.drawingContext.arc(30,50,20, 0, 2 * Math.PI, false);
+          this.drawingContext.moveTo(0,158);
+            this.drawingContext.lineTo(320,0);
+            this.drawingContext.lineTo(320,314);
+            this.drawingContext.lineTo(0,478);
+            this.drawingContext.fill();
+          this.drawingContext.clip();
     }
 
     p.draw = function() {
         p.colorMode('hsb', 360, 100, 100, 100);
-        // p.colorMode(0, 100);
         p.background(360);
         p.smooth();
         p.noStroke();
@@ -63,7 +75,7 @@ var s = function( p ) {
                 p.endShape(p.CLOSE);
             }
         }
-        // console.log(x,y);
+
     }
 
     // function mousePressed() {
@@ -81,5 +93,5 @@ var s = function( p ) {
     // }
 }
 
-var myp5 = new p5(s);
+var myp5 = new p5(s, 'myP5');
 

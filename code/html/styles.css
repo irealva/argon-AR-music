@@ -1,4 +1,10 @@
 
+body {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
 #description {
   pointer-events:auto;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -118,6 +124,12 @@ clip-path: polygon(0 84%, 100% 55%, 100% 100%, 0% 100%);
 
 .no-margin {
   margin: 0;
+}
+
+#myP5 {
+  z-index: -1;
+  /*top: 160px;
+  po*/sition:absolute;
 }
 
 .back-img {
