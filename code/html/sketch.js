@@ -4,13 +4,13 @@
 
 var s = function( p ) {
 
-    var tileCount = 12;
+    var tileCount = 8;
     var rectSize = 50;
 
     var actRandomSeed = 0;
 
     var width = 320;
-    var height = 580;
+    var height = 480;
 
     var x = null;
     var y = null;
@@ -98,5 +98,5 @@ var s = function( p ) {
     // }
 }
 
-var myp5 = new p5(s, 'myP5');
+// var myp5 = new p5(s, 'myP5');
 

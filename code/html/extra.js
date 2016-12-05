@@ -35,10 +35,6 @@ loadSong("song2.mp3");
 
 var saved = [];
 
-$('#question').on('click', function(event) {
-  loadSong("song3.mp3");
-  console.log("hi");
-});
 
 $('#add').on('click', function(event) {
   var temp = null;
@@ -67,10 +63,27 @@ $('#back').on('click', function(event) {
     showMe(back2);
 });
 
+
+var myp5;
+
 $('#library').on('click', function(event) {
   hideMe(main);
   hideMe(back1);
   hideMe(back2);
     showMe(list);
 });
+
+$('#question').on('click', function(event) {
+  loadSong("song3.mp3");
+  console.log("hi");
+});
+
+function createSketch() {
+  myp5 = new p5(s, 'myP5');
+}
+
+function destroySketch() {
+  myp5.remove();
+}
+
 

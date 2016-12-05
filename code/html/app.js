@@ -194,6 +194,7 @@ app.vuforia.isAvailable().then(function (available) {
                             // showMe(frameText);
 
                             // Hide all the audio divs
+                            destroySketch();
                             hideMe(frameMusic);
                             showMe(frameText);
                             for (var s of songArray) {
@@ -213,6 +214,7 @@ app.vuforia.isAvailable().then(function (available) {
                             var temp = songArray[found];
                             showMe(temp.el);
                             temp.el.play();
+                            createSketch();
                             // loadSong(temp.song);
                             // showMe(frameMusic);
                             // wavesurfer.on('ready', function () {
