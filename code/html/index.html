@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-
 <head>
-    <title>Directions</title>
+    <title>AR Music App</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
     <script src="../resources/lib/three/three.min.js"></script>
     <script src="../resources/lib/CSS3DArgonHUD.js"></script>
@@ -13,26 +12,23 @@
 </head>
 
 <body>
-    
     <div id="argon">
         <div id="hud">
             <div id="myP5"></div>
-
             <img id='back1' src="" alt="" class='back-img triangle-clip'></img>
             <img id='back2' src="" alt="" class='back-img bottom-clip'></img>
-
-            <div id='main' class="container no-padding main" >
+            <div id='main' class="container no-padding main">
                 <div class="row">
                     <div class="col-xs-4">
                         <button id='question' type="button btn-default" class="btn btn-circle">
-                            <object class='test' type="image/svg+xml" data="question.svg">Your browser does not support SVGs</object>
+                            <object class='test' type="image/svg+xml" data="./icons/question.svg">Your browser does not support SVGs</object>
                         </button>
                         <button id='library' type="button btn-default" class="btn btn-circle ">
-                            <object class='test' type="image/svg+xml" data="library.svg">Your browser does not support SVGs</object>
+                            <object class='test' type="image/svg+xml" data="./icons/library.svg">Your browser does not support SVGs</object>
                         </button>
                     </div>
                     <div class="col-xs-4 center">
-                        40
+                        Beats
                     </div>
                     <div class="col-xs-4">
                     </div>
@@ -46,47 +42,23 @@
                     <div id='frame-music' class="col-xs-12">
                         <div class="row">
                             <button id='add' type="button btn-default" class="btn btn-circle-large">
-                                <object class='test' type="image/svg+xml" data="add.svg">Your browser does not support SVGs</object>Add
+                                <object class='test' type="image/svg+xml" data="./icons/add.svg">Your browser does not support SVGs</object>Add
                             </button>
                         </div>
                         <div class="row">
                             <div id="player">
-                                <audio id='song2' src="./song2.mp3" autoplay controls></audio>
-                                <audio id='song3' src="./song3.mp3" autoplay controls style='display: none;'></audio>
+                                <audio id='song2' src="./songs/song2.mp3" autoplay controls></audio>
+                                <audio id='song3' src="./songs/song3.mp3" autoplay controls style='display: none;'></audio>
                             </div>
                         </div>
                     </div>
-                    <!--                 <div class="row" >
-                    <div class="col-xs-12">
-                        <button id='add' type="button btn-default" class="btn">
-                            Add
-                            <object class='test' type="image/svg+xml" data="question.svg">Your browser does not support SVGs</object>
-                        </button>
-                    </div>
-                    <div class="col-xs-12" >
-                        
-                                                  <div class='row center' >
-                            <div class="col-xs-2 center">
-                                <button type="button btn-default" class="btn btn-play center" onclick="wavesurfer.playPause()">
-                                    <object class='test' type="image/svg+xml" data="pause.svg">Your browser does not support SVGs</object>
-                                </button>
-                            </div>
-                            <div class="col-xs-10">
-                                <div id="waveform"></div>
-                            </div>
-                            <div class="col-xs-12 center">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
                 </div>
             </div>
             <div id='music-list' class="container no-padding music-list" style='display: none;'>
                 <div class="row">
                     <div class="col-xs-4">
-                        <button id='back' type="button btn-default" class="btn btn-circle">
-                            <object class='test' type="image/svg+xml" data="question.svg">Your browser does not support SVGs</object>
+                        <button id='back' type="button btn-default" class="btn btn-circle-large">
+                            <object class='test' type="image/svg+xml" data="./icons/back.svg">Your browser does not support SVGs</object>Back
                         </button>
                     </div>
                     <div class="col-xs-4 center">
@@ -96,15 +68,12 @@
                     </div>
                 </div>
                 <div class="row">
-                  <div class="col-xs-12">
-                      Music List
-                  </div>
+                    <div class="col-xs-12">
+                        Music List
+                    </div>
                 </div>
-
                 <ul id='song-list' class="list-group">
                 </ul>
-
-
             </div>
         </div>
     </div>
@@ -119,10 +88,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.52/wavesurfer.min.js"></script>
 <script src="app.js"></script>
-<script src="extra.js"></script>
 <script src="./p5.min.js"></script>
 <script src="./sketch.js"></script>
-
 </html>
