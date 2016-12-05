@@ -133,7 +133,8 @@ app.vuforia.isAvailable().then(function (available) {
                             console.log("no song playing");
 
                             if (myp5 !== undefined ){
-                                destroySketch();
+                                // destroySketch();
+                                removeSketch();
                             }
 
                             // Change UI visible/non visible elements
