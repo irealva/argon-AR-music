@@ -57,14 +57,20 @@ $('#add').on('click', function(event) {
 
 var list = document.getElementById('music-list');
 var main = document.getElementById('main');
+var back1 = document.getElementById('back1');
+var back2 = document.getElementById('back2');
 
 $('#back').on('click', function(event) {
     hideMe(list);
     showMe(main);
+    showMe(back1);
+    showMe(back2);
 });
 
 $('#library').on('click', function(event) {
   hideMe(main);
+  hideMe(back1);
+  hideMe(back2);
     showMe(list);
 });
 
