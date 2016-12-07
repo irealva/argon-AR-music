@@ -37,32 +37,59 @@ var frameMusic = document.getElementById('frame-music');
 var mainSongPlaying = null;
 // We have a song list
 var songArray = [
+    // {
+    //     song: 'song1.mp3',
+    //     trackable: 'bluestone',
+    //     entity: null,
+    //     status: 'lost',
+    //     el: document.getElementById('song2'),
+    //     artist: "Zende",
+    //     title: "Cherry Cola"
+    // },
     {
         song: 'song2.mp3',
-        trackable: 'bluestone',
-        entity: null,
-        status: 'lost',
-        el: document.getElementById('song2'),
-        artist: "artist2",
-        title: "song2"
-    },
-    {
-        song: 'song3.mp3',
-        trackable: 'whitestone',
+        trackable: 'pattern2',
         entity: null,
         status: 'lost',
         el: document.getElementById('song3'),
-        artist: "artist3",
-        title: "song3"
+        artist: "Nairobi",
+        title: "Drownin"
     },
     {
-        song: 'song4.mp3',
-        trackable: 'redstone',
+        song: 'song3.mp3',
+        trackable: 'pattern3',
         entity: null,
         status: 'lost',
         el: document.getElementById('song4'),
-        artist: "artist4",
-        title: "song4"
+        artist: "E.L.B.A.",
+        title: "Muse"
+    },
+    {
+        song: 'song4.mp3',
+        trackable: 'pattern4',
+        entity: null,
+        status: 'lost',
+        el: document.getElementById('song4'),
+        artist: "Shad Ali",
+        title: "Sun-Son"
+    },
+    {
+        song: 'song5.mp3',
+        trackable: 'pattern5',
+        entity: null,
+        status: 'lost',
+        el: document.getElementById('song4'),
+        artist: "Zende",
+        title: "Brownskin"
+    },
+    {
+        song: 'song6.mp3',
+        trackable: 'pattern6',
+        entity: null,
+        status: 'lost',
+        el: document.getElementById('song4'),
+        artist: "Charon-don",
+        title: "I don't do that"
     }
 ];
 
