@@ -1,7 +1,7 @@
 var container;
 
 // $(function() {
-function createSketch () {
+function createSketch() {
     var colors = [
         'rgb(0, 191, 168)',
         'rgb(153, 102, 255)',
@@ -47,10 +47,10 @@ function createSketch () {
 
             var type = !!(j % 2) ? 'Squiggle' : 'Nonagon';
             var height = !!(j % 2) ? width / 3 : width;
-            var shape ;
+            var shape;
             if (type === 'Squiggle') {
-              shape = makeSquiggle.call(two, width, height, Math.floor(Math.random() * 3) + 3)
-              // shape = two['make' + type](width, height, Math.floor(Math.random() * 3) + 3);
+                shape = makeSquiggle.call(two, width, height, Math.floor(Math.random() * 3) + 3)
+                    // shape = two['make' + type](width, height, Math.floor(Math.random() * 3) + 3);
             }
             if (type === 'Nonagon') {
                 shape = makeNonagon.call(two, width, height, Math.floor(Math.random() * 3) + 3)
@@ -92,19 +92,46 @@ function createSketch () {
 
     });
 
+    /*
+    var el = $('#object-add');
+    console.log(el);
+
+    el.onload = function() {
+        console.log("loaded");
+    }
+
+
+    var svgObject = document.getElementsByTagName('object')[8];
+    console.log(svgObject);
+
+    svgObject.onload = function() {
+        var mySvg = svgObject.contentDocument.getElementsByTagName('svg')[0];
+        console.log(mySvg);
+        console.log("loaded");
+        // var two = new Two();
+        // var shape = two.interpret(mySvg);
+        // console.log(shape);
+    };
+    */
+
+    // var mySvg = el.contentDocument.getElementsByTagName('svg');
+    // console.log(mySvg);
+    // var test = two.interpret(el);
+    // console.log(test);
+
     // removeSketch();
 
-// });
+    // });
 }
 
 // createSketch();
 
-function removeSketch () {
-  console.log("removing two js sketch");
-  container.remove();
+function removeSketch() {
+    console.log("removing two js sketch");
+    container.remove();
 }
 
-function makeSquiggle (width, height, phi) {
+function makeSquiggle(width, height, phi) {
     var amt = 64;
 
     var squiggle = this.makeCurve(
@@ -121,7 +148,7 @@ function makeSquiggle (width, height, phi) {
     return squiggle;
 };
 
-function makeNonagon (width, height, sides) {
+function makeNonagon(width, height, sides) {
     width /= 2;
     height /= 2;
 
