@@ -36,6 +36,7 @@ var frameText = document.getElementById('frame-text');
 var frameMusic = document.getElementById('frame-music');
 var mainSongPlaying = null;
 // We have a song list
+/*
 var songArray = [
     // {
     //     song: 'song1.mp3',
@@ -51,7 +52,7 @@ var songArray = [
         trackable: 'pattern2',
         entity: null,
         status: 'lost',
-        el: document.getElementById('song3'),
+        el: document.getElementById('song2'),
         artist: "Nairobi",
         title: "Drownin"
     },
@@ -60,7 +61,7 @@ var songArray = [
         trackable: 'pattern3',
         entity: null,
         status: 'lost',
-        el: document.getElementById('song4'),
+        el: document.getElementById('song3'),
         artist: "E.L.B.A.",
         title: "Muse"
     },
@@ -78,7 +79,7 @@ var songArray = [
         trackable: 'pattern5',
         entity: null,
         status: 'lost',
-        el: document.getElementById('song4'),
+        el: document.getElementById('song5'),
         artist: "Zende",
         title: "Brownskin"
     },
@@ -87,9 +88,68 @@ var songArray = [
         trackable: 'pattern6',
         entity: null,
         status: 'lost',
-        el: document.getElementById('song4'),
+        el: document.getElementById('song6'),
         artist: "Charon-don",
         title: "I don't do that"
+    }
+];
+*/
+
+
+var songArray = [
+    // {
+    //     song: 'song1.mp3',
+    //     trackable: 'bluestone',
+    //     entity: null,
+    //     status: 'lost',
+    //     el: document.getElementById('song2'),
+    //     artist: "Zende",
+    //     title: "Cherry Cola"
+    // },
+    {
+        song: 'song2.mp3',
+        trackable: 'pattern2',
+        entity: null,
+        status: 'lost',
+        el: document.getElementById('song2'),
+        artist: "John Coltrane",
+        title: "Blue train"
+    },
+    {
+        song: 'song3.mp3',
+        trackable: 'pattern3',
+        entity: null,
+        status: 'lost',
+        el: document.getElementById('song3'),
+        artist: "Thelonious Monk",
+        title: "Well you needn't"
+    },
+    {
+        song: 'song4.mp3',
+        trackable: 'pattern4',
+        entity: null,
+        status: 'lost',
+        el: document.getElementById('song4'),
+        artist: "Miles Davis",
+        title: "Doxy"
+    },
+    {
+        song: 'song5.mp3',
+        trackable: 'pattern5',
+        entity: null,
+        status: 'lost',
+        el: document.getElementById('song5'),
+        artist: "Charlie Parker",
+        title: "Okiedoke"
+    },
+    {
+        song: 'song6.mp3',
+        trackable: 'pattern6',
+        entity: null,
+        status: 'lost',
+        el: document.getElementById('song6'),
+        artist: "Dizzie Gillespie",
+        title: "School Days"
     }
 ];
 
